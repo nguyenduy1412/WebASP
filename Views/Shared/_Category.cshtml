@@ -1,0 +1,29 @@
+﻿
+@model IEnumerable<QLHS.Models.categories>
+
+
+<div class="category-area mb-30">
+    <h3><a href="#">Category Menu <i class="fa fa-bars"></i></a></h3>
+    <div class="category-menu">
+        <nav class="menu">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li><a href="@Url.Action("FindCategory", "Home",new { id = item.id })">@Html.DisplayFor(modelItem => item.category_name)</a></li>
+                }
+                <li class="rx-child"><a href="shop.html">Health, Fitness</a></li>
+                <li class="rx-parent">
+                    <a class="rx-default">
+                        <span class="cat-thumb fa fa-plus"></span>
+                        More categories
+                    </a>
+                    <a class="rx-show">
+                        <span class="cat-thumb fa fa-minus"></span>
+                        close menu
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+

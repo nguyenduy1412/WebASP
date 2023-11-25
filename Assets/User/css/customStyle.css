@@ -1,0 +1,65 @@
+.login-form .single-login button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #eceff8;
+    display: inline-block;
+    padding: 10px 43px;
+    color: #333;
+    text-transform: capitalize;
+    text-decoration: none;
+    float: left;
+    transition: .3s;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.login-form .single-login button:hover {
+    background: #00ABE0;
+    color: #fff;
+    border: 1px solid #00ABE0;
+}
+.header-search form button {
+    background: #f07c29 none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    height: 42px;
+    line-height: 40px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 42px;
+    border-radius: 0 5px 5px 0px;
+}
+.header-search form button:hover {
+    background: #232323 none repeat scroll 0 0;
+}
+.home-4 .header-search form button {
+    border: none;
+    background: #00abe0 none repeat scroll 0 0;
+}
+.imgCustomer {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 10%;
+}
+
+.imgCus {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    overflow: hidden;
+}
+
+.anhcustomer {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.bg-white {
+    background-color: #fff;
+}

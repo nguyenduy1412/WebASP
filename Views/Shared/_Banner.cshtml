@@ -1,0 +1,18 @@
+﻿@model IEnumerable<QLHS.Models.banner>
+<div class="slider-area">
+    <div class="slider-active owl-carousel">
+        @foreach (var item in Model)
+        {
+            <div class="single-slider slider-hm4-1 pt-154 pb-154 bg-img" style="background-image: url(/Assets/Upload/@item.img);">
+                <div class="slider-content-4 slider-animated-1 pl-40">
+                    <h1>Sale up to 30% off</h1>
+                    <h2>Books in Store</h2>
+                    <a href="#">Shopping now!</a>
+                </div>
+            </div>
+           
+        }
+
+
+    </div>
+</div>

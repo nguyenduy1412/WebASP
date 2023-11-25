@@ -1,0 +1,70 @@
+﻿@model QLHS.Models.users
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#" class="active">login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumbs-area-end -->
+<!-- user-login-area-start -->
+<div class="user-login-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="login-title text-center mb-30">
+                    <h2>Đăng ký</h2>
+                </div>
+            </div>
+            <div class="offset-lg-3 col-lg-6 col-md-12 col-12">
+                <form class="login-form" action="" method="post" onsubmit="return validate()">
+
+                    <div class="single-login">
+                        <label>Tên đăng nhập<span>*</span></label>
+                        <input type="text"  />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="single-login">
+                        <label>Số điện thoại<span>*</span></label>
+                        <input type="text" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="single-login">
+                        <label>Mật khẩu <span>*</span></label>
+                        <input type="password" id="pass1" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="single-login">
+                        <label>Nhập lại mật khẩu <span>*</span></label>
+                        <input type="password" id="pass2" />
+                        <div><span class="text-danger" id="error_pass"></span></div>
+                    </div>
+
+                    <div class="single-login single-login-2">
+                        <button type="submit">Đăng ký</button>
+                        
+                        <input id="rememberme" type="checkbox" name="rememberme" value="forever">
+                        <span>Remember me</span>
+                    </div>
+                    <div><a href="#">Quên mật khẩu</a>	</div>
+                    <div><a href="">Đăng nhập</a></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

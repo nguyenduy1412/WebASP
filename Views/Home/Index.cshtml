@@ -1,0 +1,404 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="slider-group  mt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-12">
+                <!-- slider-area-start -->
+                @{
+                    Html.RenderAction("Banner", "Home");
+                }
+                <!-- slider-area-end -->
+            </div>
+            <div class="col-lg-3 col-md-12 col-12">
+                <!-- banner-static-2-start -->
+                <div class="banner-static-2">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 col-12">
+                            <div class="banner-img-2">
+                                <a href="#"><img src="~/Assets/User/img/banner/20.jpg" alt="banner" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6 col-12">
+                            <!-- banner-area-3-start -->
+                            <div class="banner-area-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!-- single-banner-2-start -->
+                                        <div class="single-banner-2 mt-16">
+                                            <div class="single-icon-2">
+                                                <a href="#">
+                                                    <img class="service-blue-img" src="~/Assets/User/img/icon-img/service-1.png" alt="banner" />
+                                                    <img class="service-white-img" src="~/Assets/User/img/icon-img/service-1-white.png" alt="banner" />
+                                                </a>
+                                            </div>
+                                            <div class="single-text-2">
+                                                <h2>Free shipping item</h2>
+                                                <p>For all orders over $500</p>
+                                            </div>
+                                        </div>
+                                        <!-- single-banner-2-end -->
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- single-banner-2-start -->
+                                        <div class="single-banner-2 mt-16">
+                                            <div class="single-icon-2">
+                                                <a href="#">
+                                                    <img class="service-blue-img" src="~/Assets/User/img/icon-img/service-2.png" alt="banner" />
+                                                    <img class="service-white-img" src="~/Assets/User/img/icon-img/service-2-white.png" alt="banner" />
+                                                </a>
+                                            </div>
+                                            <div class="single-text-2">
+                                                <h2>Money back guarante</h2>
+                                                <p>100% money back guarante</p>
+                                            </div>
+                                        </div>
+                                        <!-- single-banner-2-end -->
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- single-banner-2-start -->
+                                        <div class="single-banner-2 mt-16">
+                                            <div class="single-icon-2">
+                                                <a href="#">
+                                                    <img class="service-blue-img" src="~/Assets/User/img/icon-img/service-3.png" alt="banner" />
+                                                    <img class="service-white-img" src="~/Assets/User/img/icon-img/service-3-white.png" alt="banner" />
+                                                </a>
+                                            </div>
+                                            <div class="single-text-2">
+                                                <h2>Cash on delivery</h2>
+                                                <p>Lorem ipsum dolor amet</p>
+                                            </div>
+                                        </div>
+                                        <!-- single-banner-2-end -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- banner-area-3-end -->
+                        </div>
+                    </div>
+
+                </div>
+                <!-- banner-static-2-end -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="home-main-area mt-30">
+    <div class="container">
+        <div class="row">
+          @*  danh mục*@
+            <div class="col-lg-3 col-md-4 col-12">
+                <!-- category-area-start -->
+                @{ 
+                    Html.RenderAction("Category", "Home");
+                }
+                <!-- category-area-end -->
+                <!-- banner-area-start -->
+                <div class="banner-area mb-30">
+                    <div class="banner-img-2">
+                        <a href="#"><img src="~/Assets/User/img/banner/21.jpg" alt="banner" /></a>
+                    </div>
+                </div>
+                <!-- banner-area-end -->
+                <!-- most-product-area-start -->
+                <div class="most-product-area mb-30">
+                    <div class="section-title-2 mb-30">
+                        <h3>Sản phẩm nổi bật</h3>
+                    </div>
+                    <div class="product-active-2 owl-carousel">
+                        <div class="product-total-2">
+                            <div class="single-most-product bd mb-18">
+                                <div class="most-product-img">
+                                    <a href="#"><img src="~/Assets/User/img/product/20.jpg" alt="book" /></a>
+                                </div>
+                                <div class="most-product-content">
+                                    <h4><a href="#">Endeavor Daytrip</a></h4>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li>$30.00</li>
+                                            <li class="old-price">$33.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-most-product bd mb-18">
+                                <div class="most-product-img">
+                                    <a href="#"><img src="~/Assets/User/img/product/21.jpg" alt="book" /></a>
+                                </div>
+                                <div class="most-product-content">
+                                    <h4><a href="#">Savvy Shoulder Tote</a></h4>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li>$30.00</li>
+                                            <li class="old-price">$35.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-most-product">
+                                <div class="most-product-img">
+                                    <a href="#"><img src="~/Assets/User/img/product/22.jpg" alt="book" /></a>
+                                </div>
+                                <div class="most-product-content">
+                                    <h4><a href="#">Compete Track Tote</a></h4>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li>$35.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-total-2">
+                            <div class="single-most-product bd mb-18">
+                                <div class="most-product-img">
+                                    <a href="#"><img src="~/Assets/User/img/product/23.jpg" alt="book" /></a>
+                                </div>
+                                <div class="most-product-content">
+                                    <h4><a href="#">Voyage Yoga Bag</a></h4>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li>$30.00</li>
+                                            <li class="old-price">$33.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-most-product bd mb-18">
+                                <div class="most-product-img">
+                                    <a href="#"><img src="~/Assets/User/img/product/24.jpg" alt="book" /></a>
+                                </div>
+                                <div class="most-product-content">
+                                    <h4><a href="#">Impulse Duffle</a></h4>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li>$70.00</li>
+                                            <li class="old-price">$74.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-most-product">
+                                <div class="most-product-img">
+                                    <a href="#"><img src="~/Assets/User/img/product/22.jpg" alt="book" /></a>
+                                </div>
+                                <div class="most-product-content">
+                                    <h4><a href="#">Fusion Backpack</a></h4>
+                                    <div class="product-price">
+                                        <ul>
+                                            <li>$59.00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- most-product-area-end -->
+                <!-- recent-post-area-start -->
+                <div class="recent-post-area mb-30">
+                    <div class="section-title-2 mb-30">
+                        <h3>Bài viết</h3>
+                    </div>
+                    <div class="post-active-2 owl-carousel">
+                        <div class="single-post">
+                            <div class="post-img">
+                                <a href="#"><img src="~/Assets/User/img/post/1.jpg" alt="post" /></a>
+                                <div class="blog-date-time">
+                                    <span class="day-time">06</span>
+                                    <span class="moth-time">Dec</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="#">The History and the Hype</a></h3>
+                                <span class="meta-author"> Demo koparion </span>
+                                <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
+                            </div>
+                        </div>
+                        <div class="single-post">
+                            <div class="post-img">
+                                <a href="#"><img src="~/Assets/User/img/post/2.jpg" alt="post" /></a>
+                                <div class="blog-date-time">
+                                    <span class="day-time">07</span>
+                                    <span class="moth-time">Dec</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="#">Answers to your Questions</a></h3>
+                                <span class="meta-author"> Demo koparion </span>
+                                <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
+                            </div>
+                        </div>
+                        <div class="single-post">
+                            <div class="post-img">
+                                <a href="#"><img src="~/Assets/User/img/post/3.jpg" alt="post" /></a>
+                                <div class="blog-date-time">
+                                    <span class="day-time">08</span>
+                                    <span class="moth-time">Dec</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="#">What is Bootstrap?</a></h3>
+                                <span class="meta-author"> Demo koparion </span>
+                                <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
+                            </div>
+                        </div>
+                        <div class="single-post">
+                            <div class="post-img">
+                                <a href="#"><img src="~/Assets/User/img/post/4.jpg" alt="post" /></a>
+                                <div class="blog-date-time">
+                                    <span class="day-time">09</span>
+                                    <span class="moth-time">Dec</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="#">Etiam eros massa</a></h3>
+                                <span class="meta-author"> Demo koparion </span>
+                                <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- recent-post-area-end -->
+                <!-- block-newsletter-area-start -->
+                <div class="block-newsletter">
+                    <h2>Sign up for send newsletter</h2>
+                    <p>You can be always up to date with our company new!</p>
+                    <form action="#">
+                        <input type="text" placeholder="Enter your email address" />
+                    </form>
+                    <a href="#">Send Email</a>
+                </div>
+                <!-- block-newsletter-area-end -->
+            </div>
+           
+            <div class="col-lg-9 col-md-8 col-12">
+                <!-- banner-area-5-start -->
+                <div class="banner-area-5">
+                    <div class="single-banner-4 xs-mb">
+                        <div class="banner-img-2">
+                            <a href="#"><img src="~/Assets/User/img/banner/24.jpg" alt="banner" /></a>
+                        </div>
+                    </div>
+                    <div class="single-banner-5">
+                        <div class="banner-img-2">
+                            <a href="#"><img src="~/Assets/User/img/banner/23.jpg" alt="banner" /></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- banner-area-5-end -->
+                <!-- new-book-area-start -->
+                <div class="new-book-area ptb-50">
+                    <div class="section-title-2 mb-30">
+                        <h3>Sản phẩm mới</h3>
+                    </div>
+                    @{
+                        Html.RenderAction("BookNew", "Home");
+                    }
+                </div>
+                <!-- new-book-area-start -->
+                <!-- hot-sell-area-2-start -->
+                <div class="hot-sell-area-2 pb-50">
+                    <div class="section-title-2 title-big bt pt-50 mb-30">
+                        <h3>Đang giảm giá</h3>
+                    </div>
+                    @{
+                        Html.RenderAction("BookSale", "Home");
+                    }
+                </div>
+                <!-- hot-sell-area-2-end -->
+                <!-- product-area-start -->
+                <div class="product-area">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-title-2 mb-30">
+                                <h3>Truyện tranh</h3>
+                            </div>
+                            @{
+                                Html.RenderAction("CategoryChild1", "Home");
+                            }
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-title-2 mb-30 mrg-sm">
+                                <h3>Thiếu nhi</h3>
+                            </div>
+                            @{
+                                Html.RenderAction("CategoryChild2", "Home");
+                            }
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-title-2 mb-30 mrg-sm">
+                                <h3>Văn học</h3>
+                            </div>
+                            @{
+                                Html.RenderAction("CategoryChild3", "Home");
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- product-area-end -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner-area-5 mtb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-img-2 for-height">
+                    <a href="#"><img src="~/Assets/User/img/banner/5.jpg" alt="banner" /></a>
+                    <div class="banner-text">
+                        <h3>G. Meyer Books & Spiritual Traveler Press</h3>
+                        <h2>Sale up to 30% off</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner-area-end -->
+<!-- social-group-area-start -->
+<div class="social-group-area ptb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="section-title-3">
+                    <h3>Latest Tweets</h3>
+                </div>
+                <div class="twitter-content">
+                    <div class="twitter-icon">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </div>
+                    <div class="twitter-text">
+                        <p>
+                            Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum notare quam
+                        </p>
+                        <a href="#">koparion</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="section-title-3">
+                    <h3>Stay Connected</h3>
+                </div>
+                <div class="link-follow">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+                        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- social-group-area-end -->

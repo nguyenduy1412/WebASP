@@ -1,0 +1,72 @@
+﻿@model IEnumerable<QLHS.Models.book>
+
+<div class="hot-sell-active owl-carousel">
+    <!-- single-product-start -->
+    @foreach (var item in Model)
+    {
+        <div class="product-wrapper">
+            <div class="product-img pb-4 pl-1 pr-1">
+                <a href="#">
+                    <img src="~/Assets/Upload/@item.image" alt="book" class="primary" />
+                </a>
+                <div class="quick-view">
+                    <a class="action-view" href="#" data-bs-target="#productModal" data-bs-toggle="modal" title="Quick View">
+                        <i class="fa fa-search-plus"></i>
+                    </a>
+                </div>
+                <div class="product-flag">
+                    <ul>
+                        <li><span class="sale">new</span></li>
+                        <li><span class="discount-percentage">-@Html.DisplayFor(modelItem => item.sale)%</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product-details text-center">
+                <div class="timer-2 text-center">
+                    <div data-countdown="2023/12/15"></div>
+                </div>
+                <div class="product-rating mt-20">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+                <h4>
+                    @if (item.book_name.Length > 20)
+                    {
+                        <a href="#">@(item.book_name.Substring(0, 18) + "...")</a>
+                    }
+                    else
+                    {
+                        <a href="#">@item.book_name</a>
+                    }
+                </h4>
+                <div class="product-price">
+                    <ul>
+                        <li class="pricebook">@item.price_sale</li>
+                        @if (item.sale >0)
+                        {
+                            <li class="old-price pricebook">@item.price</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="product-link">
+                <div class="product-button">
+                    <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                </div>
+                <div class="add-to-link">
+                    <ul>
+                        <li><a href="product-details.html" title="Details"><i class="fa fa-external-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- single-product-end -->
+
+</div>

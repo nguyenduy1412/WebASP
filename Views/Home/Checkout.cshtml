@@ -1,0 +1,215 @@
+﻿@*@model IEnumerable<QLHS.Models.orders>*@
+@model QLHS.Models.orders
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@*<h2>Checkout</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status_rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.book.book_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.orders.address_ship)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.book.book_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orders.address_ship)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
+
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#" class="active">checkout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumbs-area-end -->
+<!-- entry-header-area-start -->
+<div class="entry-header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="entry-header-title">
+                    <h2>Checkout</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#" class="active">checkout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="checkout-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @using (Html.BeginForm("Checkout", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="checkbox-form">
+                                <h3>Billing Details</h3>
+                                <div class="row">
+
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Họ tên </label>
+                                            @Html.EditorFor(model => model.full_name)
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Địa chỉ <span class="required">*</span></label>
+                                            @Html.EditorFor(model => model.address_ship)
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Số điện thoại<span class="required">*</span></label>
+                                            @Html.EditorFor(model => model.phone)
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="different-address">
+
+                                    <div class="order-notes">
+                                        <div class="checkout-form-list">
+                                            <label>Ghi chú</label>
+                                            @Html.TextAreaFor(model => model.note, new { placeholder = "Notes about your order, e.g. special notes for delivery.", rows = 10, cols = 30, id = "checkout-mess" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="your-order">
+                                <h3>Your order</h3>
+                                @{
+                                    Html.RenderAction("DetailCheckout", "Home");
+                                }
+                                <div class="payment-method">
+                                    <div class="payment-accordion">
+                                        <div class="collapses-group">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" role="tab" id="headingOne">
+                                                        <h4 class="panel-title">
+                                                            <a data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                Direct Bank Transfer
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                        <div class="panel-body">
+                                                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                                        <h4 class="panel-title">
+                                                            <a class="collapsed" role="button" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                Cheque Payment
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                        <div class="panel-body">
+                                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" role="tab" id="headingThree">
+                                                        <h4 class="panel-title">
+                                                            <a class="collapsed" role="button" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                PayPal <img src="~/Assets/User/img/2.png" alt="payment" />
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                        <div class="panel-body">
+                                                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="order-button-payment">
+                                        <input type="submit" value="Đặt hàng">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

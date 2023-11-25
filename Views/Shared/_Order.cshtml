@@ -1,0 +1,49 @@
+﻿@model IEnumerable<QLHS.Models.orders>
+<div class="myaccount-table table-responsive text-center">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Đơn hàng</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Tổng</th>
+                <th>Tùy chọn</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.date_order</td>
+
+                    <td>
+                        @switch (item.status)
+                        {
+                            case 0:
+                                <text>Chờ xác nhận</text>
+                                break;
+                            case 1:
+                                <text>Đã duyệt</text>
+                                break;
+                            case 2:
+                                <text>Đang giao</text>
+                                break;
+                            default:
+                                <text>Giao thành công</text>
+                                break;
+                        }
+                    </td>
+
+                    <td>@Html.FormatValue(item.sum_money, "{0:#,###}") đ</td>
+
+                    <td>
+                        <a href="@Url.Action("OrderDetail", "Home", new { id = item.id })" class="btn btn-sqr">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        </table>
+</div>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e9f7848719145a18caf1ed182eed1a0" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="TestDBModel.author" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.banner" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.book" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.cart" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.cart_item" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.categories" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.detail_receipt" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.favourite" Width="1.5" PointX="4.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.favourite_item" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.image_products" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.order_detail" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.orders" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.publicsher" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.receipt" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.review" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.role" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.users" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.users_roles" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDBModel.warehouse" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <AssociationConnector Association="TestDBModel.FKklnrv3weler2ftkweewlky958" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK3aceepmpjwpo8pdn7gmjdfckq" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK5m8bdjdsrod9nvrfmm2a81vrj" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK70yrt09r4r54tcgkrwbeqenbs" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK7jv5rwmalxg0a02a3ublrk0j2" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKccwdmfss4o7s0bgg8v539dgu0" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKcenee1v8lpt1yb1nvs47mlnpp" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKfl0iaofdbp1rfe46ku7jp8knx" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKis5hg85qbs5d91etr4mvd4tx6" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKrj8wtcslsd94ove68tjxwu6n" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK1uobyhgl1wvgt1jpccia8xxs3" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKg5uhi8vpsuy0lgloxk2h4w5o6" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKfrt9w4jlvspxrmx8nrex7gj3d" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKqixgqbohw7fdho6ul1ktsc9f8" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKrylb2w10mvr2e6cwbisk75obj" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK2lsjq50782j7degc8ehmjng2w" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKrws2q0si6oyd6il8gqe2aennc" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK32ql8ubntj5uh44ph9659tiih" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK6cpw2nlklblpvc7hyt7ko6v3e" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FKt4v0rrweyk393bdgt107vdx0x" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDBModel.FK2o0jvgh89lemvvo17cbqvdxaa" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

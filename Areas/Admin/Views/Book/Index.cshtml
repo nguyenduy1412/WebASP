@@ -1,0 +1,157 @@
+﻿@model IEnumerable<QLHS.Models.book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+@section Styles{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables/dataTables.bootstrap.css">
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box ">
+            <div class="box-header">
+                <a href="/Admin/Book/Create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Thêm mới</a>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="example" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.book_name)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.description)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.image)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.price)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.price_enter)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.price_sale)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.profit)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.publication_year)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.sale)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.star)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.status)
+                            </th>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.author.name_author)*@
+                                <a class="text-black">Tác giả</a>
+                            </th>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.category.category_name)*@
+                                <a class="text-black">Danh mục</a>
+                            </th>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.publicsher.name_publicsher)*@
+                                <a class="text-black">Nhà xuất bản</a>
+                            </th>
+                            <th>
+                                <a class="text-black">Tùy chọn</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.book_name)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.description)
+                                    </td>*@
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.image)*@
+                                    <img src="~/Assets/Upload/@item.image" width="100" />
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.price)*@
+                                    @Html.FormatValue(item.price, "{0:#,###}")
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.price_enter)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.price_sale)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.profit)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.publication_year)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.sale)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.star)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.author.name_author)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.categories.category_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.publicsher.name_publicsher)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.id }, new { @class = "btn btn-success btn-sm" })
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    @*<tfoot>
+                            <tr>
+                                <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Platform(s)</th>
+                                <th>Engine version</th>
+                                <th>CSS grade</th>
+                            </tr>
+                        </tfoot>*@
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+@section Scripts{
+    <!-- DataTables -->
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables/dataTables.alphabetSearch.js"></script>
+}
+
+
+

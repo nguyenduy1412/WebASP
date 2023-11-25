@@ -1,0 +1,89 @@
+﻿
+@model IEnumerable<List<QLHS.Models.book>>
+<div class="product-active-3 owl-carousel">
+    @foreach (var item in Model)
+    {
+        <div class="product-total-2">
+            <div class="single-most-product bd mb-18">
+                <div class="most-product-img">
+                    <a href="#"><img src="~/Assets/Upload/@item[0].image" alt="book" /></a>
+                </div>
+                <div class="most-product-content">
+                    <div class="product-rating">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                    </div>
+                    <h4><a href="#">@item[0].book_name</a></h4>
+                    <div class="product-price">
+                        <ul>
+                            <li class="pricebook">@item[0].price_sale</li>
+                            @if (item[0].sale >0)
+                            {
+                                <li class="old-price pricebook">@item[0].price</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="single-most-product bd mb-18">
+                <div class="most-product-img">
+                    <a href="#"><img src="~/Assets/Upload/@item[1].image" alt="book" /></a>
+                </div>
+                <div class="most-product-content">
+                    <div class="product-rating">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                    </div>
+                    <h4><a href="#">@item[1].book_name</a></h4>
+                    <div class="product-price">
+                        <ul>
+                            <li class="pricebook">@item[1].price_sale</li>
+                            @if (item[1].sale >0)
+                            {
+                                <li class="old-price pricebook">@item[1].price</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="single-most-product">
+                <div class="most-product-img">
+                    <a href="#"><img src="~/Assets/Upload/@item[2].image" alt="book" /></a>
+                </div>
+                <div class="most-product-content">
+                    <div class="product-rating">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                    </div>
+                    <h4><a href="#">@item[2].book_name</a></h4>
+                    <div class="product-price">
+                        <ul>
+                            <li class="pricebook">@item[2].price_sale</li>
+                            @if (item[2].sale >0)
+                            {
+                                <li class="old-price pricebook">@item[2].price</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>

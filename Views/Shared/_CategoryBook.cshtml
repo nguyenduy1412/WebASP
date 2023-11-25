@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<QLHS.Models.categories>
+
+
+<div class="left-menu mb-30">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("FindCategory", "Home",new { id = item.id })">@Html.DisplayFor(modelItem => item.category_name)<span>(15)</span></a></li>
+        }
+    </ul>
+</div>
