@@ -7,19 +7,29 @@ using System.Web.Mvc;
 
 namespace QLHS.Areas.Admin.Controllers
 {
+  /*  [Authorize]*/
     public class AuthorController : Controller
     {
-        QLHS.Models.TestDBEntities db = new QLHS.Models.TestDBEntities();
+        QLHS.Models.HieuSachEntities db = new QLHS.Models.HieuSachEntities();
         // GET: Admin/Category
         public ActionResult Index()
         {
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Models.author> data = db.author.ToList();
             return View(data);
         }
         [HttpGet]
         public ActionResult Create()
         {
-
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
         [HttpPost]
@@ -49,6 +59,11 @@ namespace QLHS.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             QLHS.Models.author existingcategory = db.author.Find(id);
 
             if (existingcategory == null)

@@ -13,10 +13,10 @@ namespace QLHS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TestDBEntities : DbContext
+    public partial class HieuSachEntities : DbContext
     {
-        public TestDBEntities()
-            : base("name=TestDBEntities")
+        public HieuSachEntities()
+            : base("name=HieuSachEntities")
         {
         }
     

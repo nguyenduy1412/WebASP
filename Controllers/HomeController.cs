@@ -1,18 +1,20 @@
 ﻿using QLHS.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Tokenizer.Symbols;
 using System.Web.UI;
 
 namespace QLHS.Controllers
 {
     public class HomeController : Controller
     {
-        QLHS.Models.TestDBEntities db = new QLHS.Models.TestDBEntities();
+        QLHS.Models.HieuSachEntities db = new QLHS.Models.HieuSachEntities();
         public ActionResult Index()
         {
            
@@ -110,8 +112,15 @@ namespace QLHS.Controllers
         public ActionResult Cart()
         {
             int userId = 1;
+            long sum = 0;
             var cart=db.cart.FirstOrDefault(c => c.users.id == userId);
-           
+            foreach(var item in cart.cart_item)
+            {
+               sum += (long)(item.book.price_sale * item.quantity);
+            }
+            cart.total = sum;
+            db.Entry(cart).State = EntityState.Modified;
+            db.SaveChanges();
             return View(cart);
         }
         [HttpPost]
@@ -163,7 +172,39 @@ namespace QLHS.Controllers
         [HttpPost]
         public ActionResult Checkout(QLHS.Models.orders obj)
         {
+            int userId = 1;
+            var cart = db.cart.FirstOrDefault(c => c.users.id == userId);
+            List<QLHS.Models.cart_item> list = db.cart_item.Where(c => c.cart_id == cart.id).ToList();
+            obj.sum_money=(long)cart.total;
+            obj.user_id = userId;
+            obj.date_order = DateTime.Now;
+            obj.status=0;
+            db.orders.Add(obj);
+            db.SaveChanges();
+            try
+            {
+                foreach (var cartItem in list)
+                {
+                    var orderDetail = new order_detail()
+                    {
+                        order_id = obj.id, // Gán order_id của đơn hàng mới tạo
+                        book_id = cartItem.book_id,
+                        quantity = cartItem.quantity,
+                        price=cartItem.book.price_sale,
+                        status_rate=0,
+                    };
 
+                    // Thêm chi tiết đơn hàng vào bảng orderDetail và xóa các sản phẩm trong giỏ hàng
+                    db.order_detail.Add(orderDetail);
+                    db.cart_item.Remove(cartItem);
+                }
+                db.SaveChanges();
+            }
+            catch
+            {
+                return View();
+            }
+           
             return RedirectToAction("Index");
         }
         public ActionResult BookDetail(int id)
@@ -171,10 +212,16 @@ namespace QLHS.Controllers
             var book = db.book.Find(id);
             return View(book);
         }
-        public ActionResult FindCategory(int id)
+        public ActionResult FindCategory(int id,int page=1)
         {
-            List<QLHS.Models.book> data = db.book.Where(b => b.category_id == id).ToList();
-            return View("Book",data);
+            List<QLHS.Models.book> data = db.book.Where(b => b.category_id == id).OrderBy(b => b.id).Skip((page-1)*12).Take(12).ToList();
+            int sum = db.book.Where(b => b.category_id == id).Count();
+
+            int total = sum/4 +1;
+            ViewBag.total = total;
+            ViewBag.page = page;
+            ViewBag.id=id;
+            return View("BookByCategory", data);
         }
         [ChildActionOnly]
         public ActionResult CategoryBook()
@@ -182,9 +229,25 @@ namespace QLHS.Controllers
             List<QLHS.Models.categories> data = db.categories.ToList();
             return View("_CategoryBook", data);
         }
-        public ActionResult Book()
+        [ChildActionOnly]
+        public ActionResult AuthorBook()
         {
-            List<QLHS.Models.book> data = db.book.ToList();
+            List<QLHS.Models.author> data = db.author.ToList();
+            return View("_AuthorList", data);
+        }
+        [ChildActionOnly]
+        public ActionResult PublicsherBook()
+        {
+            List<QLHS.Models.publicsher> data = db.publicsher.ToList();
+            return View("_Publicsher", data);
+        }
+        public ActionResult Book(int page=1)
+        {
+            int sum=db.book.Count();
+            List<QLHS.Models.book> data = db.book.OrderByDescending(book => book.id).Skip((page-1)*12).Take(12).ToList();
+            int total = sum/12 +1;
+            ViewBag.total = total;
+            ViewBag.page = page;
             return View(data);
         }
         [HttpPost]
@@ -251,7 +314,24 @@ namespace QLHS.Controllers
         [HttpPost]
         public ActionResult MyAccount(QLHS.Models.users obj)
         {
-
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var fImage = Request.Files["fImage"];
+                    if (fImage != null && fImage.ContentLength > 0)
+                    {
+                        string fName = fImage.FileName;
+                        string foder = Server.MapPath("~/Assets/Upload/" + fName);
+                        fImage.SaveAs(foder);
+                        obj.img =  fName;
+                    }
+                    db.Entry(obj).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("MyAccount","Home");
+                }
+                catch { }
+            }
             return View();
         }
         public ActionResult OrderDetail(int id)

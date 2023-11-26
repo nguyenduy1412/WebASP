@@ -11,8 +11,8 @@
             <div class="col-lg-12">
                 <div class="breadcrumbs-menu">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#" class="active">wishlist</a></li>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#" class="active">Yêu thích</a></li>
                     </ul>
                 </div>
             </div>
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="entry-header-title">
-                    <h2>Wishlist</h2>
+                    <h2>Yêu thích</h2>
                 </div>
             </div>
         </div>
@@ -58,12 +58,12 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td class="product-remove"><a href="#">×</a></td>
-                                            <td class="product-thumbnail"><a href="#"><img src="~/Assets/User/img/cart/1.jpg" alt="man" /></a></td>
+                                            <td class="product-remove"><button type="button" id="@item.id" class="delete-favourite" >×</button></td>
+                                            <td class="product-thumbnail"><a href="#"><img src="~/Assets/Upload/@item.book.image" alt="man" /></a></td>
                                             <td class="product-name"><a href="#">@item.book.book_name</a></td>
-                                            <td class="product-price"><span class="amount">@item.book.price_sale</span></td>
+                                            <td class="product-price"><span class="amount">@Html.FormatValue(@item.book.price_sale, "{0:#,###}") đ</span></td>
                                             <td class="product-stock-status"><span class="wishlist-in-stock">Còn hàng</span></td>
-                                            <td class="product-add-to-cart"><button >Thêm vào giỏ hàng</button></td>
+                                            <td class="product-add-to-cart"><button type="button" class="add-to-card" id="@item.book_id"  >Thêm vào giỏ hàng</button></td>
                                         </tr>
                                     }
                                 </tbody>
@@ -71,7 +71,7 @@
                                     <tr>
                                         <td colspan="6">
                                             <div class="wishlist-share">
-                                                <h4 class="wishlist-share-title">Share on:</h4>
+                                                <h4 class="wishlist-share-title">Chia sẻ trên:</h4>
                                                 <ul>
                                                     <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
                                                     <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>

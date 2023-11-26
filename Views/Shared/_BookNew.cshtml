@@ -11,7 +11,7 @@
                         <img src="~/Assets/Upload/@item[0].image" alt="book" class="primary" />
                     </a>
                     <div class="quick-view">
-                        <a class="action-view" href="#" data-bs-target="#productModal" data-bs-toggle="modal" title="Quick View">
+                        <a class="action-view" href="@Url.Action("BookDetail", "Home",new { id = item[0].id })"  title="Quick View">
                             <i class="fa fa-search-plus"></i>
                         </a>
                     </div>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="product-link">
                     <div class="product-button">
-                        <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <button class="add-to-card" id="@item[0].id" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                     </div>
                     <div class="add-to-link">
                         <ul>
@@ -76,7 +76,7 @@
                         <img src="~/Assets/Upload/@item[1].image" alt="book" class="primary" />
                     </a>
                     <div class="quick-view">
-                        <a class="action-view" href="#" data-bs-target="#productModal" data-bs-toggle="modal" title="Quick View">
+                        <a class="action-view" href="@Url.Action("BookDetail", "Home",new { id = item[1].id })" data-bs-target="#productModal" data-bs-toggle="modal" title="Quick View">
                             <i class="fa fa-search-plus"></i>
                         </a>
                     </div>

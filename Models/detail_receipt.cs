@@ -15,7 +15,6 @@ namespace QLHS.Models
     public partial class detail_receipt
     {
         public int id { get; set; }
-       
         public int quantity { get; set; }
         public Nullable<int> book_id { get; set; }
         public Nullable<int> receipt_id { get; set; }

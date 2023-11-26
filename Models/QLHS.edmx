@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TestDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="HieuSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="id" />
@@ -32,7 +32,9 @@
           <Property Name="description" Type="nvarchar" MaxLength="4000" />
           <Property Name="image" Type="varchar" MaxLength="255" />
           <Property Name="price" Type="bigint" Nullable="false" />
+          <Property Name="price_enter" Type="bigint" Nullable="false" />
           <Property Name="price_sale" Type="bigint" Nullable="false" />
+          <Property Name="profit" Type="int" />
           <Property Name="publication_year" Type="int" />
           <Property Name="sale" Type="int" />
           <Property Name="star" Type="float" />
@@ -72,8 +74,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="price" Type="bigint" Nullable="false" />
-          <Property Name="profit" Type="int" />
           <Property Name="quantity" Type="int" Nullable="false" />
           <Property Name="book_id" Type="int" />
           <Property Name="receipt_id" Type="int" />
@@ -168,6 +168,7 @@
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="address" Type="nvarchar" MaxLength="255" />
           <Property Name="birthday" Type="date" />
+          <Property Name="code_otp" Type="varchar" MaxLength="255" />
           <Property Name="email" Type="varchar" MaxLength="255" />
           <Property Name="enabled" Type="bit" />
           <Property Name="full_name" Type="nvarchar" MaxLength="255" />
@@ -446,7 +447,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TestDBModelStoreContainer">
+        <EntityContainer Name="HieuSachModelStoreContainer">
           <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="banner" EntityType="Self.banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
@@ -555,7 +556,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TestDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="HieuSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="id" />
@@ -584,7 +585,9 @@
           <Property Name="description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="price" Type="Int64" Nullable="false" />
+          <Property Name="price_enter" Type="Int64" Nullable="false" />
           <Property Name="price_sale" Type="Int64" Nullable="false" />
+          <Property Name="profit" Type="Int32" />
           <Property Name="publication_year" Type="Int32" />
           <Property Name="sale" Type="Int32" />
           <Property Name="star" Type="Double" />
@@ -639,8 +642,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="price" Type="Int64" Nullable="false" />
-          <Property Name="profit" Type="Int32" />
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <Property Name="book_id" Type="Int32" />
           <Property Name="receipt_id" Type="Int32" />
@@ -753,6 +754,7 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="code_otp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="enabled" Type="Boolean" />
           <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1039,7 +1041,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TestDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HieuSachEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="author" EntityType="Self.author" />
           <EntitySet Name="banner" EntityType="Self.banner" />
           <EntitySet Name="book" EntityType="Self.book" />
@@ -1149,9 +1151,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TestDBModelStoreContainer" CdmEntityContainer="TestDBEntities">
+        <EntityContainerMapping StorageEntityContainer="HieuSachModelStoreContainer" CdmEntityContainer="HieuSachEntities">
           <EntitySetMapping Name="author">
-            <EntityTypeMapping TypeName="TestDBModel.author">
+            <EntityTypeMapping TypeName="HieuSachModel.author">
               <MappingFragment StoreEntitySet="author">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="img" ColumnName="img" />
@@ -1160,7 +1162,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="banner">
-            <EntityTypeMapping TypeName="TestDBModel.banner">
+            <EntityTypeMapping TypeName="HieuSachModel.banner">
               <MappingFragment StoreEntitySet="banner">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="img" ColumnName="img" />
@@ -1171,14 +1173,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="book">
-            <EntityTypeMapping TypeName="TestDBModel.book">
+            <EntityTypeMapping TypeName="HieuSachModel.book">
               <MappingFragment StoreEntitySet="book">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="book_name" ColumnName="book_name" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="price_enter" ColumnName="price_enter" />
                 <ScalarProperty Name="price_sale" ColumnName="price_sale" />
+                <ScalarProperty Name="profit" ColumnName="profit" />
                 <ScalarProperty Name="publication_year" ColumnName="publication_year" />
                 <ScalarProperty Name="sale" ColumnName="sale" />
                 <ScalarProperty Name="star" ColumnName="star" />
@@ -1190,7 +1194,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cart">
-            <EntityTypeMapping TypeName="TestDBModel.cart">
+            <EntityTypeMapping TypeName="HieuSachModel.cart">
               <MappingFragment StoreEntitySet="cart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="total" ColumnName="total" />
@@ -1199,7 +1203,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cart_item">
-            <EntityTypeMapping TypeName="TestDBModel.cart_item">
+            <EntityTypeMapping TypeName="HieuSachModel.cart_item">
               <MappingFragment StoreEntitySet="cart_item">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
@@ -1209,7 +1213,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="TestDBModel.categories">
+            <EntityTypeMapping TypeName="HieuSachModel.categories">
               <MappingFragment StoreEntitySet="categories">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
@@ -1219,11 +1223,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="detail_receipt">
-            <EntityTypeMapping TypeName="TestDBModel.detail_receipt">
+            <EntityTypeMapping TypeName="HieuSachModel.detail_receipt">
               <MappingFragment StoreEntitySet="detail_receipt">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="profit" ColumnName="profit" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="receipt_id" ColumnName="receipt_id" />
@@ -1231,7 +1233,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="favourite">
-            <EntityTypeMapping TypeName="TestDBModel.favourite">
+            <EntityTypeMapping TypeName="HieuSachModel.favourite">
               <MappingFragment StoreEntitySet="favourite">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -1239,7 +1241,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="favourite_item">
-            <EntityTypeMapping TypeName="TestDBModel.favourite_item">
+            <EntityTypeMapping TypeName="HieuSachModel.favourite_item">
               <MappingFragment StoreEntitySet="favourite_item">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
@@ -1248,7 +1250,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="image_products">
-            <EntityTypeMapping TypeName="TestDBModel.image_products">
+            <EntityTypeMapping TypeName="HieuSachModel.image_products">
               <MappingFragment StoreEntitySet="image_products">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="image" ColumnName="image" />
@@ -1257,7 +1259,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="order_detail">
-            <EntityTypeMapping TypeName="TestDBModel.order_detail">
+            <EntityTypeMapping TypeName="HieuSachModel.order_detail">
               <MappingFragment StoreEntitySet="order_detail">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="price" ColumnName="price" />
@@ -1269,7 +1271,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="TestDBModel.orders">
+            <EntityTypeMapping TypeName="HieuSachModel.orders">
               <MappingFragment StoreEntitySet="orders">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="address_ship" ColumnName="address_ship" />
@@ -1284,7 +1286,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="publicsher">
-            <EntityTypeMapping TypeName="TestDBModel.publicsher">
+            <EntityTypeMapping TypeName="HieuSachModel.publicsher">
               <MappingFragment StoreEntitySet="publicsher">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name_publicsher" ColumnName="name_publicsher" />
@@ -1292,7 +1294,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="receipt">
-            <EntityTypeMapping TypeName="TestDBModel.receipt">
+            <EntityTypeMapping TypeName="HieuSachModel.receipt">
               <MappingFragment StoreEntitySet="receipt">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date_added" ColumnName="date_added" />
@@ -1301,7 +1303,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="review">
-            <EntityTypeMapping TypeName="TestDBModel.review">
+            <EntityTypeMapping TypeName="HieuSachModel.review">
               <MappingFragment StoreEntitySet="review">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="img" ColumnName="img" />
@@ -1315,7 +1317,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="role">
-            <EntityTypeMapping TypeName="TestDBModel.role">
+            <EntityTypeMapping TypeName="HieuSachModel.role">
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1323,11 +1325,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="TestDBModel.users">
+            <EntityTypeMapping TypeName="HieuSachModel.users">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="code_otp" ColumnName="code_otp" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="enabled" ColumnName="enabled" />
                 <ScalarProperty Name="full_name" ColumnName="full_name" />
@@ -1341,7 +1344,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users_roles">
-            <EntityTypeMapping TypeName="TestDBModel.users_roles">
+            <EntityTypeMapping TypeName="HieuSachModel.users_roles">
               <MappingFragment StoreEntitySet="users_roles">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
@@ -1350,7 +1353,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="warehouse">
-            <EntityTypeMapping TypeName="TestDBModel.warehouse">
+            <EntityTypeMapping TypeName="HieuSachModel.warehouse">
               <MappingFragment StoreEntitySet="warehouse">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />

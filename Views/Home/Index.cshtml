@@ -109,7 +109,7 @@
                     <div class="section-title-2 mb-30">
                         <h3>Sản phẩm nổi bật</h3>
                     </div>
-                    <div class="product-active-2 owl-carousel">
+                   @* <div class="product-active-2 owl-carousel">
                         <div class="product-total-2">
                             <div class="single-most-product bd mb-18">
                                 <div class="most-product-img">
@@ -196,8 +196,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    </div>*@
+                    @{
+                        Html.RenderAction("CategoryChild1", "Home");
+                    }
                 </div>
                 <!-- most-product-area-end -->
                 <!-- recent-post-area-start -->

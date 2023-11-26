@@ -9,7 +9,7 @@ namespace QLHS.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        QLHS.Models.TestDBEntities db = new QLHS.Models.TestDBEntities();
+        QLHS.Models.HieuSachEntities db = new QLHS.Models.HieuSachEntities();
         // GET: Admin/Category
         public ActionResult Index()
         {

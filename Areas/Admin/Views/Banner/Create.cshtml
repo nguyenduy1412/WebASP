@@ -1,0 +1,85 @@
+﻿@model QLHS.Models.banner
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Thêm Banner</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm Banner</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content">
+
+    <!-- Default box -->
+    <div class="col-8">
+        <div class="card p-5">
+            <form role="form" method="post" action="/Admin/Banner/Create" enctype="multipart/form-data">
+                <div class="box-body">
+
+
+                    <div class="form-group" new style="margin-left:7px;">
+                        <label for="exampleInputFile">Ảnh</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="input" name="fImage">
+                                <label class="custom-file-label" for="exampleInputFile"></label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Tải ảnh</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <img id="imgCate" class="mb-3 d-none" src="" width="100" style="margin-left: 7px">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.link, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.position, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.position, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.position, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" new style="margin-left:7px;">
+                        <label for="exampleInputPassword1">Trạng thái</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="true" name="status" checked="checked">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Hiện
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="false" name="status">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Ẩn
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>

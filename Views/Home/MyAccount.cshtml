@@ -13,8 +13,8 @@
             <div class="col-lg-12">
                 <div class="breadcrumbs-menu">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#" class="active">my-account</a></li>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#" class="active">Tài khoản</a></li>
                     </ul>
                 </div>
             </div>
@@ -128,7 +128,7 @@
                                                             </div>
                                                             <div class="single-input-item">
                                                                 <label for="email" class="required">Ngày sinh</label>
-                                                                <input type="date" value="@Html.FormatValue(@Model.birthday,"{0:yyyy-MM-dd}")" />
+                                                                <input type="date" name="birthday" value="@Html.FormatValue(@Model.birthday,"{0:yyyy-MM-dd}")" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 d-flex align-items-center justify-content-center">
@@ -137,7 +137,7 @@
                                                                     <img id="imgCus" src="~/Assets/Upload/@Model.img" alt="" class="w-100">
                                                                 </div>
                                                                 <input style="display: none;" type="file"
-                                                                       id="imageInput" name="fileImage">
+                                                                       id="imageInput" name="fImage">
                                                                 <button type="button" class="btn btn-success"
                                                                         id="chooseButton">
                                                                     Chọn ảnh

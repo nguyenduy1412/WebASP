@@ -7,9 +7,10 @@ using System.Web.Mvc;
 
 namespace QLHS.Areas.Admin.Controllers
 {
+   /* [Authorize]*/
     public class PublicsherController : Controller
     {
-        QLHS.Models.TestDBEntities db = new QLHS.Models.TestDBEntities();
+        QLHS.Models.HieuSachEntities db = new QLHS.Models.HieuSachEntities();
         // GET: Admin/Category
         public ActionResult Index()
         {
@@ -29,7 +30,7 @@ namespace QLHS.Areas.Admin.Controllers
             {
                 try
                 {
-                    
+
                     db.publicsher.Add(obj);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -59,7 +60,7 @@ namespace QLHS.Areas.Admin.Controllers
             {
                 try
                 {
-                   
+
 
                     db.Entry(obj).State = EntityState.Modified;
                     db.SaveChanges();

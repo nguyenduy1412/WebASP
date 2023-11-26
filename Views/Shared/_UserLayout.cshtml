@@ -96,7 +96,7 @@
                     <div class="col-lg-6 col-md-5 col-12">
                         <div class="header-search">
                             <form method="post" action="@Url.Action("Search", "Home")">
-                                <input type="text" name="keyword" value="@ViewBag.keyword" placeholder="Search entire store here..." />
+                                <input type="text" name="keyword" value="@ViewBag.keyword" placeholder="Tìm kiếm sản phẩm..." />
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
@@ -105,43 +105,9 @@
                         <div class="my-cart">
                             <ul>
                                 <li>
-                                    <a href="@Url.Action("Cart", "Home")"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                                    <a href="@Url.Action("Cart", "Home")"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                                     <span>2</span>
-                                    <div class="mini-cart-sub">
-                                        <div class="cart-product">
-                                            <div class="single-cart">
-                                                <div class="cart-img">
-                                                    <a href="#"><img src="~/Assets/User/img/product/1.jpg" alt="book" /></a>
-                                                </div>
-                                                <div class="cart-info">
-                                                    <h5><a href="#">Joust Duffle Bag</a></h5>
-                                                    <p>1 x £60.00</p>
-                                                </div>
-                                                <div class="cart-icon">
-                                                    <a href="#"><i class="fa fa-remove"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="single-cart">
-                                                <div class="cart-img">
-                                                    <a href="#"><img src="~/Assets/User/img/product/3.jpg" alt="book" /></a>
-                                                </div>
-                                                <div class="cart-info">
-                                                    <h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-                                                    <p>1 x £52.00</p>
-                                                </div>
-                                                <div class="cart-icon">
-                                                    <a href="#"><i class="fa fa-remove"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-totals">
-                                            <h5>Total <span>£12.00</span></h5>
-                                        </div>
-                                        <div class="cart-bottom">
-                                            <a class="view-cart" href="cart.html">view cart</a>
-                                            <a href="checkout.html">Check out</a>
-                                        </div>
-                                    </div>
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -159,79 +125,22 @@
                             <nav>
                                 <ul>
                                     <li class="active">
-                                        <a href="@Url.Action("Index", "Home")">Home</i></a>
+                                        <a href="@Url.Action("Index", "Home")">Trang chủ</i></a>
 
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("Book", "Home")">Book<i class="fa fa-angle-down"></i></a>
-                                        <div class="mega-menu">
-                                            <span>
-                                                <a href="#" class="title">Jackets</a>
-                                                <a href="shop.html">Tops & Tees</a>
-                                                <a href="shop.html">Polo Short Sleeve</a>
-                                                <a href="shop.html">Graphic T-Shirts</a>
-                                                <a href="shop.html">Jackets & Coats</a>
-                                                <a href="shop.html">Fashion Jackets</a>
-                                            </span>
-                                            <span>
-                                                <a href="#" class="title">weaters</a>
-                                                <a href="shop.html">Crochet</a>
-                                                <a href="shop.html">Sleeveless</a>
-                                                <a href="shop.html">Stripes</a>
-                                                <a href="shop.html">Sweaters</a>
-                                                <a href="shop.html">hoodies</a>
-                                            </span>
-                                            <span>
-                                                <a href="#" class="title">Bottoms</a>
-                                                <a href="shop.html">Heeled sandals</a>
-                                                <a href="shop.html">Polo Short Sleeve</a>
-                                                <a href="shop.html">Flat sandals</a>
-                                                <a href="shop.html">Short Sleeve</a>
-                                                <a href="shop.html">Long Sleeve</a>
-                                            </span>
-                                            <span>
-                                                <a href="#" class="title">Jeans Pants</a>
-                                                <a href="shop.html">Polo Short Sleeve</a>
-                                                <a href="shop.html">Sleeveless</a>
-                                                <a href="shop.html">Graphic T-Shirts</a>
-                                                <a href="shop.html">Hoodies</a>
-                                                <a href="shop.html">Jackets</a>
-                                            </span>
-                                        </div>
+                                        <a href="@Url.Action("Book", "Home")">Sách</a>
+                                       
                                     </li>
-                                    <li><a href="shop.html">Enable Cookies</a></li>
+                                    <li><a href="@Url.Action("Wishlist", "Home")">Yêu thích</a></li>
                                     <li>
-                                        <a href="product-details-2.html">pages<i class="fa fa-angle-down"></i></a>
-                                        <div class="sub-menu sub-menu-2">
-                                            <ul>
-                                                <li><a href="shop.html">shop</a></li>
-                                                <li><a href="shop-list.html">shop list view</a></li>
-                                                <li><a href="product-details.html">product-details</a></li>
-                                                <li><a href="product-details-affiliate.html">product-affiliate</a></li>
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="blog-details.html">blog-details</a></li>
-                                                <li><a href="contact.html">contact</a></li>
-                                                <li><a href="about.html">about</a></li>
-                                                <li><a href="login.html">login</a></li>
-                                                <li><a href="register.html">register</a></li>
-                                                <li><a href="my-account.html">my-account</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="compare.html">compare</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                                <li><a href="wishlist.html">wishlist</a></li>
-                                                <li><a href="404.html">404 Page</a></li>
-                                            </ul>
-                                        </div>
+                                        <a href="@Url.Action("Book", "Home")">Đơn hàng</i></a>
+                                       
                                     </li>
-                                    <li><a href="contact.html">contact us</a></li>
+                                    
                                     <li>
-                                        <a href="#">blog<i class="fa fa-angle-down"></i></a>
-                                        <div class="sub-menu">
-                                            <ul>
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="blog-details.html">blog-details</a></li>
-                                            </ul>
-                                        </div>
+                                        <a href="#">Bài viết</a>
+                                        
                                     </li>
                                 </ul>
                             </nav>
@@ -250,34 +159,17 @@
                             <nav id="mobile-menu-active">
                                 <ul id="nav">
                                     <li>
-                                        <a href="index-4.html">Home</a>
+                                        <a href="index-4.html">Trang chủ</a>
 
                                     </li>
-                                    <li><a href="shop.html">Enable Cookies</a></li>
+                                    <li><a href="shop.html">Sách</a></li>
                                     <li>
-                                        <a href="product-details.html">Pages</a>
-                                        <ul>
-                                            <li><a href="shop.html">shop</a></li>
-                                            <li><a href="shop-list.html">shop list view</a></li>
-                                            <li><a href="product-details.html">product-details</a></li>
-                                            <li><a href="product-details-affiliate.html">product-affiliate</a></li>
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="blog-details.html">blog-details</a></li>
-                                            <li><a href="contact.html">contact</a></li>
-                                            <li><a href="about.html">about</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="register.html">register</a></li>
-                                            <li><a href="my-account.html">my-account</a></li>
-                                            <li><a href="cart.html">cart</a></li>
-                                            <li><a href="compare.html">compare</a></li>
-                                            <li><a href="checkout.html">checkout</a></li>
-                                            <li><a href="wishlist.html">wishlist</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
+                                        <a href="product-details.html">Yêu thích</a>
+                                       
                                     </li>
-                                    <li><a href="contact.html">contact us</a></li>
+                                    <li><a href="contact.html">Đơn hàng</a></li>
                                     <li>
-                                        <a href="#">blog</a>
+                                        <a href="#">Bài viết</a>
                                         <ul>
                                             <li><a href="blog.html">Blog</a></li>
                                             <li><a href="blog-details.html">blog-details</a></li>
@@ -529,44 +421,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <script src="~/Assets/User/js/customjs.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#chooseButton').click(function () {
-                $('#imageInput').click();
-            });
-
-            $('#imageInput').change(function () {
-                var file = this.files[0];
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#imgCus').attr('src', e.target.result);
-                        $('#imgCus').show();
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-            $('#showAcc').click(function () {
-                $('#menuShow').toggleClass("show");
-            });
-            $('.pricebook').each(function () {
-                var originalPrice = parseFloat($(this).text());
-
-                if (!isNaN(originalPrice)) {
-                    var formattedPrice = formatPrice(originalPrice);
-                    $(this).text(formattedPrice);
-                }
-            });
-            function formatPrice(price) {
-                if (price >= 1000) {
-                    return (price / 1000).toFixed(0) + "k";
-                } else {
-                    return price.toFixed(0);
-                }
-            }
-        });
-        
+       
     </script>
 
 </html>

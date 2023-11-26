@@ -1,0 +1,61 @@
+﻿
+@model QLHS.Models.users
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .btn-login {
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .form-login {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: -9px 12px 5px rgba(25, 42, 70, 0.13);
+        }
+
+        .boxform {
+            height: 90vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center boxform">
+            <div class="col-lg-6 col-md-8 col-sm-10 ">
+                <div class="form-login">
+                    <h3 class="text-center pb-3">Đăng nhập</h3>
+                    <form action="" method="post">
+                        <div>
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.user_name, new { @class = "form-control", @placeholder = "Tên tài khoản" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.pass_word, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

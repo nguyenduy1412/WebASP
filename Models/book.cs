@@ -32,8 +32,8 @@ namespace QLHS.Models
         public string image { get; set; }
         public long price { get; set; }
         public long price_enter { get; set; }
-        public Nullable<int> profit { get; set; }
         public long price_sale { get; set; }
+        public Nullable<int> profit { get; set; }
         public Nullable<int> publication_year { get; set; }
         public Nullable<int> sale { get; set; }
         public Nullable<double> star { get; set; }

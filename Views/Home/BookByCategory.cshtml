@@ -1,0 +1,197 @@
+﻿@model IEnumerable<QLHS.Models.book>
+
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#" class="active">Sách</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumbs-area-end -->
+<!-- shop-main-area-start -->
+<div class="shop-main-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2 mt-sm-50 mt-xs-40">
+                <div class="shop-left">
+                    <div class="section-title-5 mb-30">
+                        <h2>Lựa chọn mua sắm</h2>
+                    </div>
+                    <div class="left-title mb-20">
+                        <h4>Danh mục</h4>
+                    </div>
+                    @{
+                        Html.RenderAction("CategoryBook", "Home");
+                    }
+                    <div class="left-title mb-20">
+                        <h4>Tác giả</h4>
+                    </div>
+                    @{
+                        Html.RenderAction("AuthorBook", "Home");
+                    }
+                    <div class="left-title mb-20">
+                        <h4>Nhà xuất bản</h4>
+                    </div>
+                    @{
+                        Html.RenderAction("PublicsherBook", "Home");
+                    }
+                    <div class="left-title mb-20">
+                        <h4>Giá</h4>
+                    </div>
+                    <div class="left-menu mb-30">
+                        <ul>
+                            <li><a href="#">Dưới 100k<span></span></a></li>
+                            <li><a href="#">100k - 200k<span></span></a></li>
+                            <li><a href="#">200k - 300k<span></span></a></li>
+                            <li><a href="#">300k - 400k<span></span></a></li>
+                            <li><a href="#">400k - 500k<span></span></a></li>
+                            <li><a href="#">Trên 500k<span></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="left-title mb-20">
+                        <h4>Dành cho bạn</h4>
+                    </div>
+                    @{
+                        Html.RenderAction("CategoryChild1", "Home");
+                    }
+                    @*<div class="banner-area mb-30 mt-5">
+                            <div class="banner-img-2">
+                                <a href="#"><img src="~/Assets/User/img/banner/31.jpg" alt="banner" /></a>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
+                <div class="category-image mb-30">
+                    <a href="#"><img src="~/Assets/User/img/banner/32.jpg" alt="banner" /></a>
+                </div>
+                <div class="section-title-5 mb-30">
+                    <h2>Sách</h2>
+                </div>
+
+                <!-- tab-area-start -->
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="th">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                    <!-- single-product-start -->
+                                    <div class="product-wrapper mb-40">
+                                        <div class="product-img">
+                                            <a href="#">
+                                                <img src="~/Assets/Upload/@item.image" alt="book" class="primary" />
+                                            </a>
+                                            <div class="quick-view">
+                                                <a class="action-view" href="#" data-bs-target="#productModal" data-bs-toggle="modal" title="Quick View">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </a>
+                                            </div>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">new</span></li>
+                                                    @{
+                                                        if (item.sale >0)
+                                                        {
+                                                            <li><span class="discount-percentage">-@item.sale%</span></li>
+                                                        }
+                                                    }
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-details text-center">
+                                            <div class="product-rating">
+                                                <ul>
+                                                    @{
+                                                        for (int i = 1; i<=5; i++)
+                                                        {
+                                                            if (i<=item.star)
+                                                            {
+                                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                            }
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <h4>
+                                                @if (item.book_name.Length > 20)
+                                                {
+                                                    <a href="#">@(item.book_name.Substring(0, 18) + "...")</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#">@item.book_name</a>
+                                                }
+                                            </h4>
+                                            <div class="product-price">
+                                                <ul>
+                                                    <li class="pricebook">@item.price_sale</li>
+                                                    @if (item.sale >0)
+                                                    {
+                                                        <li class="old-price pricebook">@item.price</li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-link">
+                                            <div class="product-button">
+                                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            </div>
+                                            <div class="add-to-link">
+                                                <ul>
+                                                    <li><a href="product-details.html" title="Details"><i class="fa fa-external-link"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single-product-end -->
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- tab-area-end -->
+                <!-- pagination-area-start -->
+                <div class="pagination-area mt-50">
+
+                    <div class="page-number">
+                        <ul>
+                            @if (ViewBag.page>1)
+                            {
+                                <li><a href="@Url.Action("FindCategory", "Home",new { id=ViewBag.id,page = ViewBag.page-1 })" class="angle"><i class="fa fa-angle-left"></i></a></li>
+                            }
+                            @for (int i = 1; i<=@ViewBag.total; i++)
+                            {
+                                <li><a class="@(ViewBag.page == i ? "active" : "")" href="@Url.Action("FindCategory", "Home",new {id=ViewBag.id, page = i })">@i</a></li>
+                            }
+                            @if (ViewBag.page<ViewBag.total)
+                            {
+                                <li><a href="@Url.Action("FindCategory", "Home",new {id=ViewBag.id, page = ViewBag.page+1 })" class="angle"><i class="fa fa-angle-right"></i></a></li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- pagination-area-end -->
+            </div>
+        </div>
+    </div>
+</div>

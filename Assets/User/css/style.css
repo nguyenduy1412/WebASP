@@ -7172,6 +7172,18 @@ p.lost-password a:hover {
     color: #F07C29;
 }
 
+    .wishlist-table table .product-remove > button {
+        font-size: 25px;
+        color: #333;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+        border: none;
+        background:white !important;
+    }
+
+.wishlist-table table .product-remove > button:hover {
+    color: #F07C29;
+}
 .wishlist-table table .product-thumbnail {
     width: 150px;
 }

@@ -1,0 +1,117 @@
+﻿@model QLHS.Models.book
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Sửa sách</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm danh mục</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content">
+
+    <!-- Default box -->
+    <div class="col-8">
+        <div class="card p-5">
+            <form role="form" method="post" action="/Admin/Book/Edit" enctype="multipart/form-data">
+                <div class="box-body">
+                    <input type="hidden" class="form-control" name="id" value="@Model.id">
+                    <input type="hidden" class="form-control" name="image" value="@Model.image">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên sách</label>
+                        <input type="text" class="form-control" name="book_name" value="@Model.book_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Giá</label>
+                        <input type="text" class="form-control" name="price_enter" value="@Model.price_enter">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Lợi nhuận</label>
+                        <input type="text" class="form-control" name="profit" value="@Model.profit">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Giảm giá</label>
+                        <input type="text" class="form-control" name="sale" value="@Model.sale">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Năm phát hành</label>
+                        <input type="text" class="form-control" name="publication_year" value="@Model.publication_year">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label " for="book_name">Tác giả</label>
+                        <div class="">
+                            @Html.DropDownList("author_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.author_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label " for="book_name">Danh mục</label>
+                        <div class="">
+                            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleSelectBorderWidth2">Nhà xuất bản</label>
+                        <div class="">
+                            @Html.DropDownList("publicsher_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.publicsher_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Trạng thái</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="true" name="status" @(Model.status == true ? "checked" : "")>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Hiện
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="false" name="status" @(Model.status == false ? "checked" : "")>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Ẩn
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Ảnh</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="input" name="fImage">
+                                <label class="custom-file-label" for="exampleInputFile">@Model.image</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Tải ảnh</span>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model != null && !string.IsNullOrEmpty(Model.image) && Model.image.Length > 1)
+                    {
+                        <img id="imgCate" class="mb-3 " src="~/Assets/Upload/@Model.image" width="100px">
+                    }
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>

@@ -6,7 +6,7 @@
         <div class="product-total-2">
             <div class="single-most-product bd mb-18">
                 <div class="most-product-img">
-                    <a href="#"><img src="~/Assets/Upload/@item[0].image" alt="book" /></a>
+                    <a href="@Url.Action("BookDetail", "Home",new { id = item[0].id })"><img src="~/Assets/Upload/@item[0].image" alt="book" /></a>
                 </div>
                 <div class="most-product-content">
                     <div class="product-rating">
@@ -18,7 +18,7 @@
                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                         </ul>
                     </div>
-                    <h4><a href="#">@item[0].book_name</a></h4>
+                    <h4><a href="@Url.Action("BookDetail", "Home",new { id = item[0].id })">@item[0].book_name</a></h4>
                     <div class="product-price">
                         <ul>
                             <li class="pricebook">@item[0].price_sale</li>
@@ -32,7 +32,7 @@
             </div>
             <div class="single-most-product bd mb-18">
                 <div class="most-product-img">
-                    <a href="#"><img src="~/Assets/Upload/@item[1].image" alt="book" /></a>
+                    <a href="@Url.Action("BookDetail", "Home",new { id = item[1].id })"><img src="~/Assets/Upload/@item[1].image" alt="book" /></a>
                 </div>
                 <div class="most-product-content">
                     <div class="product-rating">
@@ -44,7 +44,7 @@
                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                         </ul>
                     </div>
-                    <h4><a href="#">@item[1].book_name</a></h4>
+                    <h4><a href="@Url.Action("BookDetail", "Home",new { id = item[1].id })">@item[1].book_name</a></h4>
                     <div class="product-price">
                         <ul>
                             <li class="pricebook">@item[1].price_sale</li>
@@ -58,7 +58,7 @@
             </div>
             <div class="single-most-product">
                 <div class="most-product-img">
-                    <a href="#"><img src="~/Assets/Upload/@item[2].image" alt="book" /></a>
+                    <a href="@Url.Action("BookDetail", "Home",new { id = item[2].id })"><img src="~/Assets/Upload/@item[2].image" alt="book" /></a>
                 </div>
                 <div class="most-product-content">
                     <div class="product-rating">
@@ -70,7 +70,7 @@
                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                         </ul>
                     </div>
-                    <h4><a href="#">@item[2].book_name</a></h4>
+                    <h4><a href="@Url.Action("BookDetail", "Home",new { id = item[2].id })">@item[2].book_name</a></h4>
                     <div class="product-price">
                         <ul>
                             <li class="pricebook">@item[2].price_sale</li>

@@ -75,40 +75,40 @@
                 <div class="buttons-cart mb-30">
                     <ul>
 
-                        <li><a href="#">Continue Shopping</a></li>
+                        <li><a href="#">Tiếp tục mua sắm</a></li>
                     </ul>
                 </div>
 
             </div>
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="cart_totals">
-                    <h2>Cart Totals</h2>
+                    <h2>Tổng đơn hàng</h2>
                     <table>
                         <tbody>
                             <tr class="cart-subtotal">
-                                <th>Subtotal</th>
+                                <th>Tổng phụ</th>
                                 <td>
-                                    <span class="amount">@Html.FormatValue(Model.sum_money, "{0:#,###}")</span>
+                                    <span class="amount sumMoney">@Html.FormatValue(Model.sum_money, "{0:#,###}") vnđ</span>
                                 </td>
                             </tr>
                             <tr class="shipping">
-                                <th>Shipping</th>
+                                <th>Giao hàng</th>
                                 <td>
                                     <ul id="shipping_method">
 
                                         <li>
                                             <input type="radio" checked="checked">
-                                            <label> Free Shipping </label>
+                                            <label> Miễn phí vận chuyển </label>
                                         </li>
                                     </ul>
-                                    <a href="#">Calculate Shipping</a>
+                                    <a href="#"></a>
                                 </td>
                             </tr>
                             <tr class="order-total">
-                                <th>Total</th>
+                                <th>Tổng cộng</th>
                                 <td>
                                     <strong>
-                                        <span class="amount">@Html.FormatValue(Model.sum_money, "{0:#,###}")</span>
+                                        <span class="amount sumMoney">@Html.FormatValue(Model.sum_money, "{0:#,###}") vnđ</span>
                                     </strong>
                                 </td>
                             </tr>

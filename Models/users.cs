@@ -27,6 +27,7 @@ namespace QLHS.Models
         public long id { get; set; }
         public string address { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
+        public string code_otp { get; set; }
         public string email { get; set; }
         public Nullable<bool> enabled { get; set; }
         public string full_name { get; set; }

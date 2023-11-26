@@ -4,50 +4,57 @@
     Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
 }
 
-<div class="box box-primary">
-    <form method="post" action="/Admin/Author/Create" enctype="multipart/form-data">
-        <div class="box-header with-border">
-            <h2 class="box-title">Thêm mới sản phẩm</h2>
-            <div class="box-tools pull-right">
-                <button class="btn btn-info btn-sm" type="submit"><i class="fa fa-check"></i> Lưu</button>
-                <button class="btn btn-default btn-sm" type="reset"><i class="fa fa-refresh"></i> Reset</button>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Thêm tác giả</h1>
             </div>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            <div class="tab-pane active" id="tab_1">
-                @using (Html.BeginForm("Create", "Author", FormMethod.Post, new { @enctype = "mutipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-horizontal">
-                        <h4>category</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.name_author, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.name_author, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.name_author, "", new { @class = "text-danger" })
-                            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm tác giả</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content">
+
+    <!-- Default box -->
+    <div class="col-8">
+        <div class="card p-5">
+            <form role="form" method="post" action="/Admin/Author/Create" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.name_author, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.name_author, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name_author, "", new { @class = "text-danger" })
                         </div>
+                    </div>
 
-                        
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-
-                                <input class="form-control text-box single-line" id="img" name="fImage" type="file" value="">
+                    <div class="form-group" new style="margin-left:7px;">
+                        <label for="exampleInputFile">Ảnh</label>
+                        <div class="input-group" >
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="input" name="fImage">
+                                <label class="custom-file-label" for="exampleInputFile"></label>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">Tải ảnh</span>
                             </div>
                         </div>
                     </div>
-                }
-            </div><!-- /.tab-pane -->
-        </div><!-- /.box-body -->
-    </form>
-</div><!-- /.box -->
+
+                    <img id="imgCate" class="mb-3 d-none" src="" width="100">
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+

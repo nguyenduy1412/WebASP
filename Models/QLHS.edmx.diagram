@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29d897e404af4cb0bcf65a0fa97b829b" Name="Diagram1">
+        <EntityTypeShape EntityType="HieuSachModel.author" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.banner" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.book" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.cart" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.cart_item" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.categories" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.detail_receipt" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.favourite" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.favourite_item" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.image_products" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.order_detail" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.orders" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.publicsher" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.receipt" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.review" Width="1.5" PointX="10.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.role" Width="1.5" PointX="3.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.users" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.users_roles" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HieuSachModel.warehouse" Width="1.5" PointX="5.25" PointY="26.75" IsExpanded="true" />
+        <AssociationConnector Association="HieuSachModel.FKklnrv3weler2ftkweewlky958" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK3aceepmpjwpo8pdn7gmjdfckq" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK5m8bdjdsrod9nvrfmm2a81vrj" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK70yrt09r4r54tcgkrwbeqenbs" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK7jv5rwmalxg0a02a3ublrk0j2" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKccwdmfss4o7s0bgg8v539dgu0" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKcenee1v8lpt1yb1nvs47mlnpp" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKfl0iaofdbp1rfe46ku7jp8knx" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKis5hg85qbs5d91etr4mvd4tx6" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKrj8wtcslsd94ove68tjxwu6n" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK1uobyhgl1wvgt1jpccia8xxs3" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKg5uhi8vpsuy0lgloxk2h4w5o6" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKfrt9w4jlvspxrmx8nrex7gj3d" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKqixgqbohw7fdho6ul1ktsc9f8" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKrylb2w10mvr2e6cwbisk75obj" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK2lsjq50782j7degc8ehmjng2w" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKrws2q0si6oyd6il8gqe2aennc" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK32ql8ubntj5uh44ph9659tiih" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK6cpw2nlklblpvc7hyt7ko6v3e" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FKt4v0rrweyk393bdgt107vdx0x" ManuallyRouted="false" />
+        <AssociationConnector Association="HieuSachModel.FK2o0jvgh89lemvvo17cbqvdxaa" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

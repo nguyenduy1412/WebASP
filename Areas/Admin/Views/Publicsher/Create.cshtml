@@ -1,47 +1,46 @@
 ﻿@model QLHS.Models.publicsher
+
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
 }
 
-<div class="box box-primary">
-    <form method="post" action="/Admin/Publicsher/Create" enctype="multipart/form-data">
-        <div class="box-header with-border">
-            <h2 class="box-title">Thêm mới </h2>
-            <div class="box-tools pull-right">
-                <button class="btn btn-info btn-sm" type="submit"><i class="fa fa-check"></i> Lưu</button>
-                <button class="btn btn-default btn-sm" type="reset"><i class="fa fa-refresh"></i> Reset</button>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Thêm Nhà xuất bản</h1>
             </div>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            <div class="tab-pane active" id="tab_1">
-                @using (Html.BeginForm("Create", "Author", FormMethod.Post, new { @enctype = "mutipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-horizontal">
-                        <h4>nhà xuất bản</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.name_publicsher, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.name_publicsher, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.name_publicsher, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thêm Nhà xuất bản</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="content">
 
-
-
-                       
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
+    <!-- Default box -->
+    <div class="col-8">
+        <div class="card p-5">
+            <form role="form" method="post" action="/Admin/Publicsher/Create" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.name_publicsher, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.name_publicsher, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name_publicsher, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                }
-            </div><!-- /.tab-pane -->
-        </div><!-- /.box-body -->
-    </form>
-</div><!-- /.box -->
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>

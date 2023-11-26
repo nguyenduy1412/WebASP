@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HieuSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="author">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="255" />
+    <Property Name="name_author" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="banner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="255" />
+    <Property Name="link" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="position" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="description" Type="nvarchar" MaxLength="4000" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="price" Type="bigint" Nullable="false" />
+    <Property Name="price_enter" Type="bigint" Nullable="false" />
+    <Property Name="price_sale" Type="bigint" Nullable="false" />
+    <Property Name="profit" Type="int" />
+    <Property Name="publication_year" Type="int" />
+    <Property Name="sale" Type="int" />
+    <Property Name="star" Type="float" />
+    <Property Name="status" Type="bit" />
+    <Property Name="author_id" Type="int" />
+    <Property Name="category_id" Type="int" />
+    <Property Name="publicsher_id" Type="int" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="total" Type="bigint" />
+    <Property Name="user_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="cart_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="cart_id" Type="int" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="category_status" Type="bit" />
+    <Property Name="img" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="detail_receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="receipt_id" Type="int" />
+  </EntityType>
+  <EntityType Name="favourite">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="favourite_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="favourite_id" Type="int" />
+  </EntityType>
+  <EntityType Name="image_products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" />
+    <Property Name="book_id" Type="int" />
+  </EntityType>
+  <EntityType Name="order_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="price" Type="bigint" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="status_rate" Type="int" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="order_id" Type="int" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address_ship" Type="nvarchar" MaxLength="255" />
+    <Property Name="date_order" Type="datetime2" Precision="6" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="note" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="255" />
+    <Property Name="status" Type="int" />
+    <Property Name="sum_money" Type="bigint" Nullable="false" />
+    <Property Name="user_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="publicsher">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_publicsher" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_added" Type="datetime2" Precision="6" />
+    <Property Name="sum_money" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="255" />
+    <Property Name="rating" Type="nvarchar" MaxLength="255" />
+    <Property Name="review_date" Type="datetime2" Precision="6" />
+    <Property Name="star" Type="int" />
+    <Property Name="book_id" Type="int" />
+    <Property Name="detail_order_id" Type="int" />
+    <Property Name="user_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="birthday" Type="date" />
+    <Property Name="code_otp" Type="varchar" MaxLength="255" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="enabled" Type="bit" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="gender" Type="int" />
+    <Property Name="img" Type="nvarchar" MaxLength="255" />
+    <Property Name="img_cover" Type="nvarchar" MaxLength="255" />
+    <Property Name="pass_word" Type="nvarchar" MaxLength="255" />
+    <Property Name="telephone" Type="varchar" MaxLength="255" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="users_roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_id" Type="bigint" />
+    <Property Name="user_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="warehouse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="book_id" Type="int" />
+  </EntityType>
+  <Association Name="FK1uobyhgl1wvgt1jpccia8xxs3">
+    <End Role="cart" Type="Self.cart" Multiplicity="0..1" />
+    <End Role="cart_item" Type="Self.cart_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cart">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart_item">
+        <PropertyRef Name="cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2lsjq50782j7degc8ehmjng2w">
+    <End Role="order_detail" Type="Self.order_detail" Multiplicity="0..1" />
+    <End Role="review" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_detail">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="review">
+        <PropertyRef Name="detail_order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2o0jvgh89lemvvo17cbqvdxaa">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="users_roles" Type="Self.users_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users_roles">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK32ql8ubntj5uh44ph9659tiih">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3aceepmpjwpo8pdn7gmjdfckq">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_detail">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK5m8bdjdsrod9nvrfmm2a81vrj">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="warehouse" Type="Self.warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="warehouse">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK6cpw2nlklblpvc7hyt7ko6v3e">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="review" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="review">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK70yrt09r4r54tcgkrwbeqenbs">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="review" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="review">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK7jv5rwmalxg0a02a3ublrk0j2">
+    <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+    <End Role="book" Type="Self.book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKccwdmfss4o7s0bgg8v539dgu0">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="detail_receipt" Type="Self.detail_receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detail_receipt">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKcenee1v8lpt1yb1nvs47mlnpp">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="image_products" Type="Self.image_products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="image_products">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKfl0iaofdbp1rfe46ku7jp8knx">
+    <End Role="publicsher" Type="Self.publicsher" Multiplicity="0..1" />
+    <End Role="book" Type="Self.book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="publicsher">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="publicsher_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKfrt9w4jlvspxrmx8nrex7gj3d">
+    <End Role="receipt" Type="Self.receipt" Multiplicity="0..1" />
+    <End Role="detail_receipt" Type="Self.detail_receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="receipt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detail_receipt">
+        <PropertyRef Name="receipt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKg5uhi8vpsuy0lgloxk2h4w5o6">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKis5hg85qbs5d91etr4mvd4tx6">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="cart_item" Type="Self.cart_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart_item">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKklnrv3weler2ftkweewlky958">
+    <End Role="author" Type="Self.author" Multiplicity="0..1" />
+    <End Role="book" Type="Self.book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="author">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="book">
+        <PropertyRef Name="author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKqixgqbohw7fdho6ul1ktsc9f8">
+    <End Role="favourite" Type="Self.favourite" Multiplicity="0..1" />
+    <End Role="favourite_item" Type="Self.favourite_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="favourite">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="favourite_item">
+        <PropertyRef Name="favourite_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKrj8wtcslsd94ove68tjxwu6n">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="favourite_item" Type="Self.favourite_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="favourite_item">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKrws2q0si6oyd6il8gqe2aennc">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_detail">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKrylb2w10mvr2e6cwbisk75obj">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="favourite" Type="Self.favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="favourite">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKt4v0rrweyk393bdgt107vdx0x">
+    <End Role="role" Type="Self.role" Multiplicity="0..1" />
+    <End Role="users_roles" Type="Self.users_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users_roles">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HieuSachModelStoreContainer">
+    <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="banner" EntityType="Self.banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cart_item" EntityType="Self.cart_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detail_receipt" EntityType="Self.detail_receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="favourite" EntityType="Self.favourite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="favourite_item" EntityType="Self.favourite_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="image_products" EntityType="Self.image_products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_detail" EntityType="Self.order_detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="publicsher" EntityType="Self.publicsher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="receipt" EntityType="Self.receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="review" EntityType="Self.review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users_roles" EntityType="Self.users_roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="warehouse" EntityType="Self.warehouse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK1uobyhgl1wvgt1jpccia8xxs3" Association="Self.FK1uobyhgl1wvgt1jpccia8xxs3">
+      <End Role="cart" EntitySet="cart" />
+      <End Role="cart_item" EntitySet="cart_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK2lsjq50782j7degc8ehmjng2w" Association="Self.FK2lsjq50782j7degc8ehmjng2w">
+      <End Role="order_detail" EntitySet="order_detail" />
+      <End Role="review" EntitySet="review" />
+    </AssociationSet>
+    <AssociationSet Name="FK2o0jvgh89lemvvo17cbqvdxaa" Association="Self.FK2o0jvgh89lemvvo17cbqvdxaa">
+      <End Role="users" EntitySet="users" />
+      <End Role="users_roles" EntitySet="users_roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK32ql8ubntj5uh44ph9659tiih" Association="Self.FK32ql8ubntj5uh44ph9659tiih">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK3aceepmpjwpo8pdn7gmjdfckq" Association="Self.FK3aceepmpjwpo8pdn7gmjdfckq">
+      <End Role="book" EntitySet="book" />
+      <End Role="order_detail" EntitySet="order_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK5m8bdjdsrod9nvrfmm2a81vrj" Association="Self.FK5m8bdjdsrod9nvrfmm2a81vrj">
+      <End Role="book" EntitySet="book" />
+      <End Role="warehouse" EntitySet="warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK6cpw2nlklblpvc7hyt7ko6v3e" Association="Self.FK6cpw2nlklblpvc7hyt7ko6v3e">
+      <End Role="users" EntitySet="users" />
+      <End Role="review" EntitySet="review" />
+    </AssociationSet>
+    <AssociationSet Name="FK70yrt09r4r54tcgkrwbeqenbs" Association="Self.FK70yrt09r4r54tcgkrwbeqenbs">
+      <End Role="book" EntitySet="book" />
+      <End Role="review" EntitySet="review" />
+    </AssociationSet>
+    <AssociationSet Name="FK7jv5rwmalxg0a02a3ublrk0j2" Association="Self.FK7jv5rwmalxg0a02a3ublrk0j2">
+      <End Role="categories" EntitySet="categories" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+    <AssociationSet Name="FKccwdmfss4o7s0bgg8v539dgu0" Association="Self.FKccwdmfss4o7s0bgg8v539dgu0">
+      <End Role="book" EntitySet="book" />
+      <End Role="detail_receipt" EntitySet="detail_receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FKcenee1v8lpt1yb1nvs47mlnpp" Association="Self.FKcenee1v8lpt1yb1nvs47mlnpp">
+      <End Role="book" EntitySet="book" />
+      <End Role="image_products" EntitySet="image_products" />
+    </AssociationSet>
+    <AssociationSet Name="FKfl0iaofdbp1rfe46ku7jp8knx" Association="Self.FKfl0iaofdbp1rfe46ku7jp8knx">
+      <End Role="publicsher" EntitySet="publicsher" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+    <AssociationSet Name="FKfrt9w4jlvspxrmx8nrex7gj3d" Association="Self.FKfrt9w4jlvspxrmx8nrex7gj3d">
+      <End Role="receipt" EntitySet="receipt" />
+      <End Role="detail_receipt" EntitySet="detail_receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FKg5uhi8vpsuy0lgloxk2h4w5o6" Association="Self.FKg5uhi8vpsuy0lgloxk2h4w5o6">
+      <End Role="users" EntitySet="users" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="FKis5hg85qbs5d91etr4mvd4tx6" Association="Self.FKis5hg85qbs5d91etr4mvd4tx6">
+      <End Role="book" EntitySet="book" />
+      <End Role="cart_item" EntitySet="cart_item" />
+    </AssociationSet>
+    <AssociationSet Name="FKklnrv3weler2ftkweewlky958" Association="Self.FKklnrv3weler2ftkweewlky958">
+      <End Role="author" EntitySet="author" />
+      <End Role="book" EntitySet="book" />
+    </AssociationSet>
+    <AssociationSet Name="FKqixgqbohw7fdho6ul1ktsc9f8" Association="Self.FKqixgqbohw7fdho6ul1ktsc9f8">
+      <End Role="favourite" EntitySet="favourite" />
+      <End Role="favourite_item" EntitySet="favourite_item" />
+    </AssociationSet>
+    <AssociationSet Name="FKrj8wtcslsd94ove68tjxwu6n" Association="Self.FKrj8wtcslsd94ove68tjxwu6n">
+      <End Role="book" EntitySet="book" />
+      <End Role="favourite_item" EntitySet="favourite_item" />
+    </AssociationSet>
+    <AssociationSet Name="FKrws2q0si6oyd6il8gqe2aennc" Association="Self.FKrws2q0si6oyd6il8gqe2aennc">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_detail" EntitySet="order_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FKrylb2w10mvr2e6cwbisk75obj" Association="Self.FKrylb2w10mvr2e6cwbisk75obj">
+      <End Role="users" EntitySet="users" />
+      <End Role="favourite" EntitySet="favourite" />
+    </AssociationSet>
+    <AssociationSet Name="FKt4v0rrweyk393bdgt107vdx0x" Association="Self.FKt4v0rrweyk393bdgt107vdx0x">
+      <End Role="role" EntitySet="role" />
+      <End Role="users_roles" EntitySet="users_roles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

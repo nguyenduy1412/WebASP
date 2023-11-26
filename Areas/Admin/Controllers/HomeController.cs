@@ -11,6 +11,11 @@ namespace QLHS.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
     }
