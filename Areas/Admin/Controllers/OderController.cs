@@ -106,5 +106,6 @@ namespace QLHS.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+        
     }
 }

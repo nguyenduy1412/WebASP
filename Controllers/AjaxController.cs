@@ -1,6 +1,7 @@
 ﻿using QLHS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ namespace QLHS.Controllers
 {
     public class AjaxController : Controller
     {
+        public QLHS.Models.users us = QLHS.App_Start.SessionConfig.GetUser();
         QLHS.Models.HieuSachEntities db = new QLHS.Models.HieuSachEntities();
         // GET: Ajax
         public ActionResult Index()
@@ -35,7 +37,8 @@ namespace QLHS.Controllers
         [HttpPost]
         public bool AddItem(int id)
         {
-            int userId = 1;
+
+            long userId = (long)us.id;
             var cart = db.cart.FirstOrDefault(c => c.users.id == userId);
             if (cart != null)
             {
@@ -75,6 +78,22 @@ namespace QLHS.Controllers
             cartItem.quantity = quantity;
             db.SaveChanges();
             return Json(new { success = true, message = "Cập nhật giỏ hàng thành công" });
+        }
+        [HttpPost]
+        public bool UpdateStatus(int id, int status)
+        {
+            try
+            {
+                var item = db.orders.Find(id);
+                item.status = status;
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch
+            {
+
+            }
+            return true;
         }
     }
     

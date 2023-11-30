@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Danh mục</h1>
+                <h1 class="m-0">Đơn hàng</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -27,9 +27,7 @@
     <div class="col-12">
         <div class="card">
             <div class=" p-2 align-items-center d-flex justify-content-between">
-                <div>
-                    <a href="@Url.Action("Create", "Oder")" class="btn btn-success">+Thêm mới </a>
-                </div>
+               
 
                 <div class="card-tools">
                     <form>
@@ -52,24 +50,24 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.address_ship)
+                                Địa chỉ
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.date_order)
+                                Ngày đặt
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.full_name)
+                               Tên người nhận
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.phone)
+                                Số điện thoại
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.status)
+                                Trạng thái
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.sum_money)
+                                Tồng tiền
                             </th>
-                            <th>Tùy chọn</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -89,34 +87,24 @@
                                     @Html.DisplayFor(modelItem => item.phone)
                                 </td>
                                 <td>
-                                    <select class="badge st" th:id="{@item.id}"
-                                            th:classappend="{@item.status == 0 ? 'bg-danger' : (@item.status == 1) ? 'bg-warning' : (@item.status == 2) ? 'bg-primary' : 'bg-success'}">
-                                        <option value="0" th:selected="{@item.status == 0}">Chờ xác nhận</option>
-                                        <option value="1" th:selected="{@item.status == 1}">Đã duyệt</option>
-                                        <option value="2" th:selected="{@item.status == 2}">Đang giao</option>
-                                        <option value="3" th:selected="{@item.status == 3}">Giao thành công</option>
+                                    <select class="badge st" id="@item.id">
+                                        <option value="0"  @(item.status==0 ? "selected" : "" ) >Chờ xác nhận</option>
+                                        <option value="1"  @(item.status==1 ? "selected" : "" )  >Đã duyệt</option>
+                                        <option value="2"  @(item.status==2 ? "selected" : "" )  >Đang giao</option>
+                                        <option value="3" @(item.status==3 ? "selected" : "" )  >Giao thành công</option>
                                     </select>
 
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.sum_money)
+                                    @Html.FormatValue(item.sum_money, "{0:#,###}") đ
                                 </td>
-                                <td>
-                                    <a href="@Url.Action("Edit", "Oder",new { id = item.id })"
-                                       class="btn btn-primary">Chi tiết</a>
-                                </td>
+                                
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
-            @*<div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li th:classappend="${currentPage==1 ? 'disabled' :''}" class="page-item"><a class="page-link" th:href="@{'?page='+${currentPage-1}}">«</a></li>
-                        <li th:each="i:${#numbers.sequence(1,totalPage)}" th:classappend="${currentPage==i ? 'active' :''}" class="page-item"><a class="page-link" th:text="${i}" th:href="@{${keyword!=null && keyword!='' ? '?keyword=' +keyword+'&' : '?'}+'page='+${i}}"></a></li>
-                        <li th:classappend="${currentPage==totalPage ? 'disabled' :''}" class="page-item"><a class="page-link" th:href="@{'?page='+${currentPage+1}}">»</a></li>
-                    </ul>
-                </div>*@
+            
         </div>
 
     </div>

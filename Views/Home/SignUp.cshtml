@@ -30,23 +30,26 @@
                 </div>
             </div>
             <div class="offset-lg-3 col-lg-6 col-md-12 col-12">
-                <form class="login-form" action="" method="post" onsubmit="return validate()">
 
-                    <div class="single-login">
-                        <label>Tên đăng nhập<span>*</span></label>
-                        <input type="text"  />
-                        <span class="text-danger"></span>
-                    </div>
-                    <div class="single-login">
-                        <label>Số điện thoại<span>*</span></label>
-                        <input type="text" />
-                        <span class="text-danger"></span>
-                    </div>
-                    <div class="single-login">
-                        <label>Mật khẩu <span>*</span></label>
-                        <input type="password" id="pass1" />
-                        <span class="text-danger"></span>
-                    </div>
+                @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @class = "login-form", onsubmit = "return validate();" }))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="single-login">
+                    <label>Tên đăng nhập<span>*</span></label>
+                    @Html.TextBoxFor(m => m.user_name)
+                    <span class="text-danger"></span>
+                </div>
+                <div class="single-login">
+                    <label>Email<span>*</span></label>
+
+                    @Html.TextBoxFor(m => m.email)
+                    <span class="text-danger"></span>
+                </div>
+                <div class="single-login">
+                    <label>Mật khẩu <span>*</span></label>
+                    @Html.PasswordFor(m => m.pass_word, new { @id = "pass1"})
+                    <span class="text-danger"></span>
+                </div>
                     <div class="single-login">
                         <label>Nhập lại mật khẩu <span>*</span></label>
                         <input type="password" id="pass2" />
@@ -55,14 +58,13 @@
 
                     <div class="single-login single-login-2">
                         <button type="submit">Đăng ký</button>
-                        
+
                         <input id="rememberme" type="checkbox" name="rememberme" value="forever">
                         <span>Remember me</span>
                     </div>
                     <div><a href="#">Quên mật khẩu</a>	</div>
                     <div><a href="">Đăng nhập</a></div>
-
-                </form>
+                }
             </div>
         </div>
     </div>

@@ -12,11 +12,17 @@ namespace QLHS.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var us = QLHS.App_Start.SessionConfig.GetUser();
-            if (us == null)
+            if (us==null)
             {
                 return RedirectToAction("Index", "Login");
             }
-            return View();
+            if (us.users_roles.Where(u => u.role_id==1).FirstOrDefault()!=null)
+            {
+                return View();
+                
+            }
+            return RedirectToAction("Index", "Login");
+
         }
     }
 }

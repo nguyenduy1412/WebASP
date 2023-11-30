@@ -114,9 +114,15 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="wc-proceed-to-checkout">
-                        <a href="@Url.Action("Checkout", "Home")">Hủy đơn hàng</a>
-                    </div>
+                    @{
+                        if (Model.status<2)
+                        {
+                            <div class="wc-proceed-to-checkout">
+                                <a href="@Url.Action("CancelOrder", "Home",new { id = Model.id })">Hủy đơn hàng</a>
+                            </div>
+                        }
+                    }
+
                 </div>
             </div>
         </div>

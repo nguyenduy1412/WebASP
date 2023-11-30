@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using PagedList;
 
 namespace QLHS.Areas.Admin.Controllers
 {
@@ -16,17 +18,18 @@ namespace QLHS.Areas.Admin.Controllers
         
 
         // GET: Admin/Product
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var us = QLHS.App_Start.SessionConfig.GetUser();
             if (us == null)
             {
                 return RedirectToAction("Index", "Login");
             }
+            int pageSize = 4;
+            int pageNumber = page ?? 1;
+            List<QLHS.Models.book> data = db.book.ToList();
 
-                List<QLHS.Models.book> data = db.book.ToList();
-
-            return View(data);
+            return View(data.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public ActionResult Create()

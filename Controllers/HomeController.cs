@@ -1,13 +1,17 @@
-﻿using QLHS.Models;
+﻿using QLHS.App_Start;
+using QLHS.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Razor.Tokenizer.Symbols;
+using System.Web.Security;
 using System.Web.UI;
 
 namespace QLHS.Controllers
@@ -15,6 +19,7 @@ namespace QLHS.Controllers
     public class HomeController : Controller
     {
         QLHS.Models.HieuSachEntities db = new QLHS.Models.HieuSachEntities();
+        public QLHS.Models.users us = QLHS.App_Start.SessionConfig.GetUser();
         public ActionResult Index()
         {
            
@@ -105,13 +110,23 @@ namespace QLHS.Controllers
         [ChildActionOnly]
         public ActionResult Order()
         {
-            int userId = 1;
+            
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
             List<QLHS.Models.orders> data = db.orders.Where(o => o.user_id ==userId).ToList();
             return View("_Order", data);
         }
         public ActionResult Cart()
         {
-            int userId = 1;
+            
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
             long sum = 0;
             var cart=db.cart.FirstOrDefault(c => c.users.id == userId);
             foreach(var item in cart.cart_item)
@@ -126,7 +141,7 @@ namespace QLHS.Controllers
         [HttpPost]
         public ActionResult AddCart(int bookId, int quantity)
         {
-            int userId = 1;
+            long userId = (long)us.id;
             var cart = db.cart.FirstOrDefault(c => c.users.id == userId);
             if (cart != null)
             {
@@ -159,7 +174,12 @@ namespace QLHS.Controllers
         [ChildActionOnly]
         public ActionResult DetailCheckout()
         {
-            int userId = 1;
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
             var cart = db.cart.FirstOrDefault(c => c.users.id == userId);
             return View("_DetailCheckout", cart);
         }
@@ -172,7 +192,12 @@ namespace QLHS.Controllers
         [HttpPost]
         public ActionResult Checkout(QLHS.Models.orders obj)
         {
-            int userId = 1;
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
             var cart = db.cart.FirstOrDefault(c => c.users.id == userId);
             List<QLHS.Models.cart_item> list = db.cart_item.Where(c => c.cart_id == cart.id).ToList();
             obj.sum_money=(long)cart.total;
@@ -217,7 +242,7 @@ namespace QLHS.Controllers
             List<QLHS.Models.book> data = db.book.Where(b => b.category_id == id).OrderBy(b => b.id).Skip((page-1)*12).Take(12).ToList();
             int sum = db.book.Where(b => b.category_id == id).Count();
 
-            int total = sum/4 +1;
+            int total = sum/12 +1;
             ViewBag.total = total;
             ViewBag.page = page;
             ViewBag.id=id;
@@ -262,15 +287,65 @@ namespace QLHS.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Login(QLHS.Models.users obj)
+        {
+            if (ModelState.IsValid)
+            {
+                string hashedPassword;
+                using (MD5 md5 = MD5.Create())
+                {
+                    byte[] hashedPasswordBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(obj.pass_word));
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in hashedPasswordBytes)
+                    {
+                        sb.Append(b.ToString("x2"));
+                    }
+                    hashedPassword = sb.ToString();
+                }
+                Models.users check = db.users.FirstOrDefault(m => m.user_name == obj.user_name && m.pass_word == hashedPassword);
+                if (check == null)
+                {
+                    //Đăng nhập thất bại
+                    ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng!");
+                }
+                else
+                {
+                    SessionConfig.SetUser(check);
+                    var us = SessionConfig.GetUser();
+                    //FormsAuthentication.SetAuthCookie(check.user_name, false);
+                    if (Request.QueryString["ReturnUrl"]==null || Request.QueryString["ReturnUrl"] == "")
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return Redirect(Request.QueryString["ReturnUrl"]);
+                    }
+                }
+            }
+            return View(obj);
+        }
         public ActionResult SignUp()
         {
 
             return View();
         }
+        public ActionResult Logout()
+        {
+            SessionConfig.SetUser(null);
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+        }
         [HttpPost]
         public ActionResult AddWishList(int bookId)
         {
-            int userId = 1;
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
             var favourite = db.favourite.FirstOrDefault(c => c.users.id == userId);
             if (favourite != null)
             {
@@ -301,14 +376,25 @@ namespace QLHS.Controllers
         }
         public ActionResult Wishlist()
         {
-            int userId = 1;
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
             var wish = db.favourite.FirstOrDefault(c => c.users.id == userId);
             List<QLHS.Models.favourite_item> data = db.favourite_item.Where(c => c.favourite_id == wish.id).ToList();
             return View(data);
         }
         public ActionResult MyAccount()
         {
-            var user = db.users.Find(1);
+            var us = QLHS.App_Start.SessionConfig.GetUser();
+            if (us == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
+            long userId = (long)us.id;
+            var user = db.users.Find(userId);
             return View(user);
         }
         [HttpPost]
@@ -339,6 +425,17 @@ namespace QLHS.Controllers
             var order = db.orders.Find(id);
             return View(order);
         }
-        
+        public ActionResult CancelOrder(int id)
+        {
+            var order = db.orders.Find(id);
+            List<QLHS.Models.order_detail> lst = db.order_detail.Where(o=>o.order_id == id).ToList();
+            foreach (var item in lst)
+            {
+                db.order_detail.Remove(item);
+            }
+            db.orders.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("MyAccount", "Home");
+        }
     }
 }

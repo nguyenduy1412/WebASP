@@ -1,4 +1,5 @@
 ﻿using QLHS.App_Start;
+using QLHS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +43,12 @@ namespace QLHS.Areas.Admin.Controllers
                 }
                 else
                 {
-                    SessionConfig.SetUser(obj);
+                    SessionConfig.SetUser(check);
                     var us = SessionConfig.GetUser();
                     FormsAuthentication.SetAuthCookie(check.user_name, false);
                     if (Request.QueryString["ReturnUrl"]==null || Request.QueryString["ReturnUrl"] == "")
                     {
+                        
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -69,7 +71,7 @@ namespace QLHS.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(Models.users model, string confirmPassword)
+        public ActionResult Register(Models.users model)
         {
             if (ModelState.IsValid)
             {
@@ -79,11 +81,7 @@ namespace QLHS.Areas.Admin.Controllers
                     ModelState.AddModelError("user_name", "Username is already taken. Please choose a different one.");
                     return View(model);
                 }
-                if (model.pass_word != confirmPassword)
-                {
-                    ModelState.AddModelError("confirmPassword", "The password and confirmation password do not match.");
-                    return View(model);
-                }
+                
                 using (MD5 md5 = MD5.Create())
                 {
                     byte[] hashedPasswordBytes = md5.ComputeHash(Encoding.UTF8.GetBytes(model.pass_word));
@@ -96,7 +94,20 @@ namespace QLHS.Areas.Admin.Controllers
                 }
                 db.users.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                var newCart = new cart()
+                {
+                    user_id=model.id,
+                    total = 0 // Đặt giá trị mặc định hoặc theo nhu cầu của bạn
+                };
+                db.cart.Add(newCart);
+                var newFavourite = new favourite()
+                {
+                    user_id = model.id,
+
+                };
+                db.favourite.Add(newFavourite);
+                db.SaveChanges();
+                return RedirectToAction("Login", "Home");
             }
             return View(model);
         }

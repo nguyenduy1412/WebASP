@@ -74,9 +74,21 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="account-area text-end d-flex justify-content-end">
                             <ul>
-                                <li><a href="@Url.Action("MyAccount", "Home")">My Account</a></li>
-                                <li><a href="@Url.Action("Login", "Home")">Đăng nhập</a></li>
-                                <li><a href="@Url.Action("SignUp", "Home")">Đăng ký</a></li>
+
+
+                                @{
+                                    QLHS.Models.users us = QLHS.App_Start.SessionConfig.GetUser();
+                                    if (us!=null)
+                                    {
+                                        <li><a href="@Url.Action("MyAccount", "Home")">@us.user_name</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("Login", "Home")">Đăng nhập</a></li>
+                                        <li><a href="@Url.Action("SignUp", "Home")">Đăng ký</a></li>
+                                    }
+                                }
+
                             </ul>
                         </div>
                     </div>
@@ -106,8 +118,8 @@
                             <ul>
                                 <li>
                                     <a href="@Url.Action("Cart", "Home")"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
-                                    <span>2</span>
-                                    
+                                   
+
                                 </li>
                             </ul>
                         </div>
@@ -130,17 +142,17 @@
                                     </li>
                                     <li>
                                         <a href="@Url.Action("Book", "Home")">Sách</a>
-                                       
+
                                     </li>
                                     <li><a href="@Url.Action("Wishlist", "Home")">Yêu thích</a></li>
                                     <li>
                                         <a href="@Url.Action("Book", "Home")">Đơn hàng</i></a>
-                                       
+
                                     </li>
-                                    
+
                                     <li>
                                         <a href="#">Bài viết</a>
-                                        
+
                                     </li>
                                 </ul>
                             </nav>
@@ -165,7 +177,7 @@
                                     <li><a href="shop.html">Sách</a></li>
                                     <li>
                                         <a href="product-details.html">Yêu thích</a>
-                                       
+
                                     </li>
                                     <li><a href="contact.html">Đơn hàng</a></li>
                                     <li>
@@ -423,7 +435,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="~/Assets/User/js/customjs.js"></script>
     <script>
-       
+
     </script>
 
 </html>

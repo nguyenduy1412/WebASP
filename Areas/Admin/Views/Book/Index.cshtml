@@ -1,9 +1,10 @@
-﻿@model IEnumerable<QLHS.Models.book>
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
 }
-
+@using PagedList.Mvc;
+@model PagedList.IPagedList<QLHS.Models.book>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -50,19 +51,19 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.id)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().id)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.book_name)
+                                Tên sách
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.image)
+                                Ảnh
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.price)
+                               Giá nhập
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.status)
+                                Trạng thái
                             </th>
                             <th>
                                 Danh mục
@@ -71,7 +72,7 @@
                                 Nhà xuất bản
                             </th>
                             <th>
-                                Nhà xuất bản
+                                Tùy chọn
                             </th>
 
                         </tr>
@@ -103,7 +104,7 @@
                                         <span class="badge bg-danger">Ẩn</span>
                                     }
                                 </td>
-                               
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.categories.category_name)
                                 </td>
@@ -124,13 +125,24 @@
                     </tbody>
                 </table>
             </div>
-            @*<div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li th:classappend="${currentPage==1 ? 'disabled' :''}" class="page-item"><a class="page-link" th:href="@{'?page='+${currentPage-1}}">«</a></li>
-                        <li th:each="i:${#numbers.sequence(1,totalPage)}" th:classappend="${currentPage==i ? 'active' :''}" class="page-item"><a class="page-link" th:text="${i}" th:href="@{${keyword!=null && keyword!='' ? '?keyword=' +keyword+'&' : '?'}+'page='+${i}}"></a></li>
-                        <li th:classappend="${currentPage==totalPage ? 'disabled' :''}" class="page-item"><a class="page-link" th:href="@{'?page='+${currentPage+1}}">»</a></li>
-                    </ul>
-                </div>*@
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber - 1, SortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">«</a>
+                    </li>
+
+                    @for (int i = 1; i <=(int) Model.TotalItemCount / 4; i++)
+                    {
+                        <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i, SortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.PageNumber == Model.TotalItemCount ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber + 1, SortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">»</a>
+                    </li>
+                </ul>
+           
         </div>
 
     </div>

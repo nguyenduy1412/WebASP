@@ -81,3 +81,7 @@ D:\Documents\HK1(2024)\ASP\QLHS\bin\EntityFramework.dll
 D:\Documents\HK1(2024)\ASP\QLHS\bin\EntityFramework.SqlServer.dll
 D:\Documents\HK1(2024)\ASP\QLHS\bin\EntityFramework.xml
 D:\Documents\HK1(2024)\ASP\QLHS\bin\EntityFramework.SqlServer.xml
+D:\Documents\HK1(2024)\ASP\QLHS\bin\PagedList.dll
+D:\Documents\HK1(2024)\ASP\QLHS\bin\PagedList.Mvc.dll
+D:\Documents\HK1(2024)\ASP\QLHS\bin\PagedList.xml
+D:\Documents\HK1(2024)\ASP\QLHS\bin\PagedList.Mvc.xml

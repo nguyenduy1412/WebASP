@@ -30,14 +30,14 @@
                 </div>
             </div>
             <div class="offset-lg-3 col-lg-6 col-md-12 col-12">
-                <form class="login-form"  method="post">
+                <form class="login-form" action="/Home/Login" method="post">
                     <div class="single-login">
                         <label>Tên đăng nhập<span>*</span></label>
-                        <input type="text" name="username" />
+                        @Html.TextBoxFor(m => m.user_name)
                     </div>
                     <div class="single-login">
                         <label>Mật khẩu <span>*</span></label>
-                        <input type="password" name="password" />
+                        @Html.PasswordFor(m => m.pass_word)
                     </div>
                     <div class="single-login single-login-2">
                         <button type="submit">Đăng nhập</button>
